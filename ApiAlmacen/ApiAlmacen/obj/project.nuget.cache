@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7KDzOUAJ4qmM4egYWpX4AkLP1wPwLryFmaLKcxR9gasqyNDRC5TazZgN1TzcyzWQsm2S7C3mt7QUSOhVcD56tQ==",
+  "dgSpecHash": "5JnCFKA7piiL2KgGGy2BWC+9JOhDtkeq6AP5FD+hwdPuoNyxEuMMthk6YBubXtc4Bkb2dRDPiLifs4i5wzVgow==",
   "success": true,
-  "projectFilePath": "D:\\TECNIMOTORS\\1. Produccion\\1. Almacen\\docker\\ApiAlmacen\\ApiAlmacen\\ApiAlmacen.csproj",
+  "projectFilePath": "D:\\TECNIMOTORS\\1. Produccion\\1. Almacen\\docker\\Api-Almacen-Docker\\ApiAlmacen\\ApiAlmacen\\ApiAlmacen.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Programador\\.nuget\\packages\\dapper\\2.1.24\\dapper.2.1.24.nupkg.sha512",
     "C:\\Users\\Programador\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.0\\microsoft.aspnetcore.authentication.jwtbearer.6.0.0.nupkg.sha512",

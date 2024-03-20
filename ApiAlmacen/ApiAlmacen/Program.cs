@@ -75,7 +75,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         ValidIssuer = issuer,
         ValidateIssuerSigningKey = true,
         ValidateLifetime = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(signinkey))
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(signinkey!))
     };
 });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -85,7 +85,7 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsProduction())
 {
     app.UseDeveloperExceptionPage();
     app.UseSwagger();
