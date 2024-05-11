@@ -53,6 +53,53 @@ namespace ApiAlmacen.Controllers.Almacen
             return Ok(result);
         }
 
+        [HttpGet("ListarAnalisisCostosInventario/{Limit}/{Offset}")]
+        public async Task<IActionResult> ListarAnalisisCostosInventario(string Limit, string Offset)
+        {
+            var result = await ialmacenRepository.ListarAnalisisCostosInventario(Limit, Offset);
 
+            return Ok(result);
+        }
+
+
+
+        [HttpGet("ListarFamiliaCodigo")]
+        public async Task<IActionResult> ListarFamiliaCodigo()
+        {
+            var result = await ialmacenRepository.ListarFamiliaCodigo();
+
+            return Ok(result);
+        }
+
+        [HttpGet("ListarSubFamiliaCodigo")]
+        public async Task<IActionResult> ListarSubFamiliaCodigo(string Familia)
+        {
+            var result = await ialmacenRepository.ListarSubFamiliaCodigo(Familia);
+
+            return Ok(result);
+        }
+
+        [HttpGet("ListarArticuloInventario/{Limit}/{Offset}")]
+        public async Task<IActionResult> ListarArticuloInventario(string Limit, string Offset)
+        {
+            var result = await ialmacenRepository.ListarArticuloInventario(Limit, Offset);
+
+            return Ok(result);
+        }
+
+        [HttpGet("ListarArticuloInventarioFilter/{Limit}/{Offset}/{Articulo}")]
+        public async Task<IActionResult> ListarArticuloInventarioFilter(string Limit, string Offset, string Articulo)
+        {
+            var result = await ialmacenRepository.ListarArticuloInventarioFilter(Limit, Offset, Articulo);
+
+            return Ok(result);
+        }
+        [HttpGet("DetalleInventarioGeneral/{Articulo}")]
+        public async Task<IActionResult> DetalleInventarioGeneral(string Articulo)
+        {
+            var result = await ialmacenRepository.DetalleInventarioGeneral(Articulo);
+
+            return Ok(result);
+        }
     }
 }
