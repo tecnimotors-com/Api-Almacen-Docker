@@ -82,18 +82,17 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
         {
             var db = DbConnection();
 
-            var sql = @"
-	                    SELECT codigo_interno as codart, codigo_equivalente as codequi, descripcion, cantidad_solicitada, stock_viaje, stock_proy, 
-total_stock, otros_motoline, stock_ate, stock_abtao, stock_brillantes, stock_iquitos, salidas_consumo, prom_venta_2024,
-prom_venta_2023, total_ventas, valor_fob_ultimo, valor_fob_2019_antes, precio_vta_actual, precio_venta_2019, comprometido, 
-ventas_2024_ate, ventas_2024_abtao, ventas_2024_brillantes, ventas_2024_iquitos, ventas_2023, ventas_2022, ventas_2021, 
-ventas_2020, ventas_2019, ventas_2013, fecha_ult_venta, fecha_ult_compra, compra_2024_total, compra_2024_ultima, 
-compra_2023_total, compra_2023_ultima, total_compra, stock_en_transito, transf_gratuita_del_mes, correccion_de_cod_tip_mov, 
-correccion_de_cod_cantidad, valor_vta_soles, valor_vta_dolar, ultimo_costo_prom_soles, ultimo_costo_prom_dolar, 
-margen_unit_soles, margen_unit_dolar, margen_unitario, utilidad_por_ventas, abs_x_participacion, indice_rotacion, 
-prom_ventas_ult_mes, nro_meses_stock, proveedor_nombre, proveedor_codigo, familia_codigo, familia_descripcion, 
-sub_familia_codigo, sub_familia_descripcion
-FROM public.analisis_inv_general_tecnimotors_2024_04_12 order by codart desc limit '" + Limit + "' offset '" + Offset + "' ;";
+            var sql = @"SELECT codigo_interno as codart, codigo_equivalente as codequi, descripcion, cantidad_solicitada, stock_viaje, stock_proy, 
+            total_stock, otros_motoline, stock_ate, stock_abtao, stock_brillantes, stock_iquitos, salidas_consumo, prom_venta_2024,
+            prom_venta_2023, total_ventas, valor_fob_ultimo, valor_fob_2019_antes, precio_vta_actual, precio_venta_2019, comprometido, 
+            ventas_2024_ate, ventas_2024_abtao, ventas_2024_brillantes, ventas_2024_iquitos, ventas_2023, ventas_2022, ventas_2021, 
+            ventas_2020, ventas_2019, ventas_2013, fecha_ult_venta, fecha_ult_compra, compra_2024_total, compra_2024_ultima, 
+            compra_2023_total, compra_2023_ultima, total_compra, stock_en_transito, transf_gratuita_del_mes, correccion_de_cod_tip_mov, 
+            correccion_de_cod_cantidad, valor_vta_soles, valor_vta_dolar, ultimo_costo_prom_soles, ultimo_costo_prom_dolar, 
+            margen_unit_soles, margen_unit_dolar, margen_unitario, utilidad_por_ventas, abs_x_participacion, indice_rotacion, 
+            prom_ventas_ult_mes, nro_meses_stock, proveedor_nombre, proveedor_codigo, familia_codigo, familia_descripcion, 
+            sub_familia_codigo, sub_familia_descripcion
+            FROM public.analisis_inv_general_tecnimotors_2024_04_12 order by codart desc limit '" + Limit + "' offset '" + Offset + "' ;";
 
             return await db.QueryAsync<TlInventario>(sql, new { });
         }
@@ -124,23 +123,22 @@ FROM public.analisis_inv_general_tecnimotors_2024_04_12 order by codart desc lim
             var db = DbConnection();
 
             var sql = @"
-SELECT codigo_interno as codart, codigo_equivalente as codequi, descripcion, cantidad_solicitada, stock_viaje, stock_proy, 
-total_stock, otros_motoline, stock_ate, stock_abtao, stock_brillantes, stock_iquitos, salidas_consumo, prom_venta_2024,
-prom_venta_2023, total_ventas, valor_fob_ultimo, valor_fob_2019_antes, precio_vta_actual, precio_venta_2019, comprometido, 
-ventas_2024_ate, ventas_2024_abtao, ventas_2024_brillantes, ventas_2024_iquitos, ventas_2023, ventas_2022, ventas_2021, 
-ventas_2020, ventas_2019, ventas_2013, fecha_ult_venta, fecha_ult_compra, compra_2024_total, compra_2024_ultima, 
-compra_2023_total, compra_2023_ultima, total_compra, stock_en_transito, transf_gratuita_del_mes, correccion_de_cod_tip_mov, 
-correccion_de_cod_cantidad, valor_vta_soles, valor_vta_dolar, ultimo_costo_prom_soles, ultimo_costo_prom_dolar, 
-margen_unit_soles, margen_unit_dolar, margen_unitario, utilidad_por_ventas, abs_x_participacion, indice_rotacion, 
-prom_ventas_ult_mes, nro_meses_stock, proveedor_nombre, proveedor_codigo, familia_codigo, familia_descripcion, 
-sub_familia_codigo, sub_familia_descripcion
-FROM public.analisis_inv_general_tecnimotors_2024_04_12
+                        SELECT codigo_interno as codart, codigo_equivalente as codequi, descripcion, cantidad_solicitada, stock_viaje, stock_proy, 
+                        total_stock, otros_motoline, stock_ate, stock_abtao, stock_brillantes, stock_iquitos, salidas_consumo, prom_venta_2024,
+                        prom_venta_2023, total_ventas, valor_fob_ultimo, valor_fob_2019_antes, precio_vta_actual, precio_venta_2019, comprometido, 
+                        ventas_2024_ate, ventas_2024_abtao, ventas_2024_brillantes, ventas_2024_iquitos, ventas_2023, ventas_2022, ventas_2021, 
+                        ventas_2020, ventas_2019, ventas_2013, fecha_ult_venta, fecha_ult_compra, compra_2024_total, compra_2024_ultima, 
+                        compra_2023_total, compra_2023_ultima, total_compra, stock_en_transito, transf_gratuita_del_mes, correccion_de_cod_tip_mov, 
+                        correccion_de_cod_cantidad, valor_vta_soles, valor_vta_dolar, ultimo_costo_prom_soles, ultimo_costo_prom_dolar, 
+                        margen_unit_soles, margen_unit_dolar, margen_unitario, utilidad_por_ventas, abs_x_participacion, indice_rotacion, 
+                        prom_ventas_ult_mes, nro_meses_stock, proveedor_nombre, proveedor_codigo, familia_codigo, familia_descripcion, 
+                        sub_familia_codigo, sub_familia_descripcion
+                        FROM public.analisis_inv_general_tecnimotors_2024_04_12
                         where familia_codigo = '" + Familia + @"' and sub_familia_codigo = '" + SubFamilia + @"' 
-                         order by codart desc limit '" + Limit + "' offset '" + Offset + "' ;";
+                        order by codart desc limit '" + Limit + "' offset '" + Offset + "' ;";
 
             return await db.QueryAsync<TlInventario>(sql, new { });
         }
-
 
         public async Task<IEnumerable<TlArticulo>> ListarArticuloInventario(string Limit, string Offset)
         {
@@ -154,6 +152,34 @@ FROM public.analisis_inv_general_tecnimotors_2024_04_12
 
             return await db.QueryAsync<TlArticulo>(sql, new { });
         }
+
+	public async Task<IEnumerable<TlArticulo>> ListarArticuloInventarioFamilia(string Limit, string Offset, string Familia)
+	{
+	    var db = DbConnection();
+
+            var sql = @"
+                        SELECT distinct codigo_interno 
+                        FROM public.analisis_inv_general_tecnimotors_2024_04_12 
+			where familia_codigo = '" + Familia + @"' 
+                        order by codigo_interno desc 
+                        limit '" + Limit + "' offset '" + Offset + "' ;";
+
+            return await db.QueryAsync<TlArticulo>(sql, new { });
+	}
+
+	public async Task<IEnumerable<TlArticulo>> ListarArticuloSubFamilia(string Limit, string Offset, string Familia, string SubFamilia)
+	{
+	    var db = DbConnection();
+
+            var sql = @"
+                        SELECT distinct codigo_interno 
+                        FROM public.analisis_inv_general_tecnimotors_2024_04_12 
+			where familia_codigo = '" + Familia + @"' and sub_familia_codigo = '" + SubFamilia + @"' 
+                        order by codigo_interno desc 
+                        limit '" + Limit + "' offset '" + Offset + "' ;";
+
+            return await db.QueryAsync<TlArticulo>(sql, new { });
+	}
 
         public async Task<IEnumerable<TlArticulo>> ListarArticuloInventarioFilter(string Limit, string Offset, string Articulo)
         {
@@ -189,6 +215,235 @@ FROM public.analisis_inv_general_tecnimotors_2024_04_12
                       ;";
 
             return await db.QueryFirstOrDefaultAsync<TlInventario>(sql, new { codigo_interno = Articulo });
+        }
+
+        public async Task<TlMonthList> ListadoCountCantidad(string Articulo, string Mes1, string Mes2, string Mes3, string Mes4, string Mes5, string Mes6)
+        {
+            var month1 = Mes1.Replace('-', '/');
+            var month2 = Mes2.Replace('-', '/');
+            var month3 = Mes3.Replace('-', '/');
+            var month4 = Mes4.Replace('-', '/');
+            var month5 = Mes5.Replace('-', '/');
+            var month6 = Mes6.Replace('-', '/');
+            var db = DbConnection();
+
+            var sql = @"
+                        select  
+                        (
+                        select (sum(CAST(REPLACE(cantidad_1, ',', '') as DECIMAL)))
+                        from public.ventas_anual where TRIM(articulo) = '" + Articulo + @"' and fecha_emitida like '%/" + month1 + @"'
+                        ) as month1 , 
+                        (
+                        select (sum(CAST(REPLACE(cantidad_1, ',', '') as DECIMAL)))
+                        from public.ventas_anual where TRIM(articulo) = '" + Articulo + @"' and fecha_emitida like '%/" + month2 + @"'
+                        ) as month2,
+                        (
+                        select (sum(CAST(REPLACE(cantidad_1, ',', '') as DECIMAL))) 
+                        from public.ventas_anual where TRIM(articulo) = '" + Articulo + @"' and fecha_emitida like '%/" + month3 + @"'
+                        ) as month3 ,
+                        (
+                        select (sum(CAST(REPLACE(cantidad_1, ',', '') as DECIMAL))) 
+                        from public.ventas_anual where TRIM(articulo) = '" + Articulo + @"' and fecha_emitida like '%/" + month4 + @"'
+                        ) as month4 ,
+                        (
+                        select (sum(CAST(REPLACE(cantidad_1, ',', '') as DECIMAL))) 
+                        from public.ventas_anual where TRIM(articulo) = '" + Articulo + @"' and fecha_emitida like '%/" + month5 + @"'
+                        ) as month5 ,
+                        (
+                        select (sum(CAST(REPLACE(cantidad_1, ',', '') as DECIMAL))) 
+                        from public.ventas_anual where TRIM(articulo) = '" + Articulo + @"' and fecha_emitida like '%/" + month6 + @"'
+                        ) as month6 
+                       ";
+            return await db.QueryFirstOrDefaultAsync<TlMonthList>(sql, new { });
+        }
+
+        public async Task<IEnumerable<TlDetallelote>> ListarDetalleLoteImportacion(string Limit, string Offset, string Articulo)
+        {
+            var db = DbConnection();
+
+            var sql = @"
+                        SELECT codigo, equivalente, descripcion, mhfech, importacion, tc, stock_actual, cantidad,
+                        fob, costo_unit, lote, costo_lote, costo_unit_promedio, precio_venta_mn, precio_venta_mn_proy,
+                        dolares, actual, proy, campo1, utilidad_promedio, venta_2024, venta_2023, venta_2022,
+                        venta_2021, venta_2020, venta_2019, venta_2013, flete, mon  
+                        FROM public.lotes_tecnimotors   
+                        where codigo like upper('%" + Articulo + @"%') 
+                        limit '" + Limit + "' offset '" + Offset + "' ;";
+
+            return await db.QueryAsync<TlDetallelote>(sql, new { });
+        }
+
+        public async Task<TlDetLote> TotalDetalleLote(string Articulo, string Tc, string Desc, float Igv)
+        {
+            var db = DbConnection();
+
+            var sql = @"
+                        select sum(cast(lote as integer)) as totallote,
+                        ROUND(sum(cast(costo_lote as DECIMAL)),6) as totalcostolote,
+                        ROUND((sum(cast(costo_lote as DECIMAL)))/(sum(cast(lote as integer))),6)  as totalcostounitario,
+			ROUND(sum(((((CAST(precio_venta_mn as decimal)/CAST('" + Tc + @"' as decimal))*(1-(CAST('" + Desc + @"' as decimal)/100)))/NULLIF(((CAST(costo_unit as decimal))*" + Igv + @"),0))*(CAST(lote as integer)))),6) as totacampo,
+			ROUND(((sum(((((CAST(precio_venta_mn as decimal)/CAST('" + Tc + @"' as decimal))*(1-(CAST('" + Desc + @"' as decimal)/100)))/NULLIF(((CAST(costo_unit as decimal))*" + Igv + @"),0))*(CAST(lote as integer)))))/
+                        (sum(cast(lote as integer)))),6) as totalutilprom
+                        from public.lotes_tecnimotors 
+                        where codigo like upper('%" + Articulo + "%');";
+            return await db.QueryFirstOrDefaultAsync<TlDetLote>(sql, new { });
+        }
+
+        public async Task<TlPedidos> TotalPedidoAnalisis(string Articulo)
+        {
+            var db = DbConnection();
+
+            var sql = @"
+                        select * from public.pedidos_importacion
+                        where codigo_interno like trim(upper('%" + Articulo + @"%'))
+                       ";
+            return await db.QueryFirstOrDefaultAsync<TlPedidos>(sql, new { });
+        }
+        /*------------------------------------------------------------------*/
+        /*------------------------------------------------------------------*/
+        /*------------------------------------------------------------------*/
+        public async Task<IEnumerable<TlArticulo>> FilterCodigoInterno(string Limit, string Offset, string CodiInte)
+        {
+            var db = DbConnection();
+
+            var sql = @"
+                        SELECT distinct codigo_interno
+                        FROM public.analisis_inv_general_tecnimotors_2024_04_12 
+                        where UPPER(codigo_interno) like UPPER('%" + CodiInte + @"%')
+                        order by codigo_interno asc
+                        limit '" + Limit + "' offset '" + Offset + "' ;";
+
+            return await db.QueryAsync<TlArticulo>(sql, new { });
+        }
+        /*------------------------------------------------------------------*/
+        public async Task<IEnumerable<TlCodiEqui>> FilterCodigoEqui(string Limit, string Offset, string CodigoEqui)
+        {
+            var db = DbConnection();
+
+            var sql = @"
+                        SELECT distinct codigo_interno, codigo_equivalente
+                        FROM public.analisis_inv_general_tecnimotors_2024_04_12 
+                        where UPPER(codigo_equivalente) like UPPER('%" + CodigoEqui + @"%')
+                        order by codigo_equivalente asc
+                        limit '" + Limit + "' offset '" + Offset + "' ;";
+
+            return await db.QueryAsync<TlCodiEqui>(sql, new { });
+        }
+      /*------------------------------------------------------------------*/
+        public async Task<IEnumerable<TlCodiEqui>> FilterCodigoEquiFamilia(string Limit, string Offset, string Familia)
+        {
+            var db = DbConnection();
+
+            var sql = @"
+                        SELECT distinct codigo_interno, codigo_equivalente
+                        FROM public.analisis_inv_general_tecnimotors_2024_04_12 
+                        where familia_codigo = '" + Familia + @"' 
+                        order by codigo_equivalente asc
+                        limit '" + Limit + "' offset '" + Offset + "' ;";
+
+            return await db.QueryAsync<TlCodiEqui>(sql, new { });
+        }
+      /*------------------------------------------------------------------*/
+        public async Task<IEnumerable<TlCodiEqui>> FilterCodigoEquiSubFamilia(string Limit, string Offset, string Familia , string SubFamilia)
+        {
+            var db = DbConnection();
+
+            var sql = @"
+                        SELECT distinct codigo_interno, codigo_equivalente
+                        FROM public.analisis_inv_general_tecnimotors_2024_04_12 
+			where familia_codigo = '" + Familia + @"' and sub_familia_codigo = '" + SubFamilia + @"' 
+                        order by codigo_equivalente asc
+                        limit '" + Limit + "' offset '" + Offset + "' ;";
+
+            return await db.QueryAsync<TlCodiEqui>(sql, new { });
+        }
+        /*------------------------------------------------------------------*/
+        public async Task<IEnumerable<TlDescrip>> FilterDescripcion(string Limit, string Offset, string Descrip)
+        {
+            var db = DbConnection();
+
+            var sql = @"
+                        SELECT distinct codigo_interno, codigo_equivalente, descripcion
+                        FROM public.analisis_inv_general_tecnimotors_2024_04_12 
+                        where UPPER(descripcion) like UPPER('%" + Descrip + @"%')
+                        order by descripcion asc
+                        limit '" + Limit + "' offset '" + Offset + "' ;";
+
+            return await db.QueryAsync<TlDescrip>(sql, new { });
+        }
+	public async Task<IEnumerable<TlDescrip>> FilterDescripcionFamilia(string Limit, string Offset, string Familia)
+        {
+            var db = DbConnection();
+
+            var sql = @"
+                        SELECT distinct codigo_interno, codigo_equivalente, descripcion 
+                        FROM public.analisis_inv_general_tecnimotors_2024_04_12 
+			where familia_codigo = '" + Familia + @"'  
+                        order by descripcion asc 
+                        limit '" + Limit + "' offset '" + Offset + "' ;";
+
+           return await db.QueryAsync<TlDescrip>(sql, new { });
+        }
+        public async Task<IEnumerable<TlDescrip>> FilterDescripcionSubFamilia(string Limit, string Offset, string Familia, string SubFamilia)
+        {
+            var db = DbConnection();
+
+            var sql = @"
+                        SELECT distinct codigo_interno, codigo_equivalente, descripcion 
+                        FROM public.analisis_inv_general_tecnimotors_2024_04_12 
+                        where familia_codigo = '" + Familia + @"' and sub_familia_codigo = '" + SubFamilia + @"' 
+                        order by descripcion asc 
+                        limit '" + Limit + "' offset '" + Offset + "' ;";
+
+            return await db.QueryAsync<TlDescrip>(sql, new { });
+        }
+        /*------------------------------------------------------------------*/
+        public async Task<IEnumerable<TlProvefilter>> FilterProveedorfilter(string Limit, string Offset, string ProveCod)
+        {
+            var db = DbConnection();
+
+            var sql = @"
+                        SELECT distinct proveedor_nombre, proveedor_codigo FROM public.analisis_inv_general_tecnimotors_2024_04_12
+                        where UPPER(proveedor_codigo) like UPPER('%" + ProveCod + @"%')
+                        order by proveedor_nombre asc
+                        limit '" + Limit + "' offset '" + Offset + "' ;";
+
+            return await db.QueryAsync<TlProvefilter>(sql, new { });
+        }
+        public async Task<IEnumerable<TlProvefilter>> FilterProveedor(string Limit, string Offset)
+        {
+            var db = DbConnection();
+
+            var sql = @"
+                        SELECT distinct proveedor_nombre, proveedor_codigo FROM public.analisis_inv_general_tecnimotors_2024_04_12
+                        order by proveedor_nombre asc
+                        limit '" + Limit + "' offset '" + Offset + "' ;";
+
+            return await db.QueryAsync<TlProvefilter>(sql, new { });
+        }
+	public async Task<IEnumerable<TlProvefilter>> FilterProveedorFamilia(string Limit, string Offset, string Familia)
+        {
+            var db = DbConnection();
+
+            var sql = @"
+                        SELECT distinct proveedor_nombre, proveedor_codigo FROM public.analisis_inv_general_tecnimotors_2024_04_12 
+			where familia_codigo = '" + Familia + @"'  
+                        order by proveedor_nombre asc 
+                        limit '" + Limit + "' offset '" + Offset + "' ;";
+
+           return await db.QueryAsync<TlProvefilter>(sql, new { });
+        }
+	public async Task<IEnumerable<TlProvefilter>> FilterProveedorSubFamilia(string Limit, string Offset, string Familia , string SubFamilia)
+        {
+            var db = DbConnection();
+
+            var sql = @"
+                        SELECT distinct proveedor_nombre, proveedor_codigo FROM public.analisis_inv_general_tecnimotors_2024_04_12
+			where familia_codigo = '" + Familia + @"' and sub_familia_codigo = '" + SubFamilia + @"' 
+                        order by proveedor_nombre asc
+                        limit '" + Limit + "' offset '" + Offset + "' ;";
+
+           return await db.QueryAsync<TlProvefilter>(sql, new { });
         }
     }
 }

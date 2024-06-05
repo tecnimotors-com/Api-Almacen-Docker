@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "5JnCFKA7piiL2KgGGy2BWC+9JOhDtkeq6AP5FD+hwdPuoNyxEuMMthk6YBubXtc4Bkb2dRDPiLifs4i5wzVgow==",
+  "dgSpecHash": "/EZ+bLR7nEHni8dEyEKjvw9OprAmqkwEDtgDZY77I2HKMWE96EwLfZ8jHKksiXdR876ETZNkvg3kcZws5hNIFQ==",
   "success": true,
   "projectFilePath": "D:\\TECNIMOTORS\\1. Produccion\\1. Almacen\\docker\\Api-Almacen-Docker\\ApiAlmacen\\ApiAlmacen\\ApiAlmacen.csproj",
   "expectedPackageFiles": [
@@ -17,7 +17,7 @@
     "C:\\Users\\Programador\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.10.0\\microsoft.identitymodel.tokens.6.10.0.nupkg.sha512",
     "C:\\Users\\Programador\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\Programador\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.5\\microsoft.visualstudio.azure.containers.tools.targets.1.19.5.nupkg.sha512",
-    "C:\\Users\\Programador\\.nuget\\packages\\npgsql\\8.0.1\\npgsql.8.0.1.nupkg.sha512",
+    "C:\\Users\\Programador\\.nuget\\packages\\npgsql\\8.0.3\\npgsql.8.0.3.nupkg.sha512",
     "C:\\Users\\Programador\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "C:\\Users\\Programador\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
     "C:\\Users\\Programador\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
