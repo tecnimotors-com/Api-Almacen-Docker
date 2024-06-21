@@ -1,6 +1,8 @@
 using ApiAlmacen.Context;
 using ApiAlmacen.Repository.AlmacenRepository.Interface;
 using ApiAlmacen.Repository.AlmacenRepository.Repo;
+using ApiAlmacen.Repository.ReporteRepository.Interface;
+using ApiAlmacen.Repository.ReporteRepository.Repo;
 using ApiAlmacen.Services.Interface;
 using ApiAlmacen.Services.Repo;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -13,7 +15,6 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 var Configuration = builder.Configuration;
-// Add services to the container.
 
 builder.Services.AddControllers();
 var postgreSQLConnectionConfiguration = new PostgreSQLConfiguration(Configuration.GetConnectionString("PostgreSQLConnection")!);
@@ -21,7 +22,8 @@ builder.Services.AddSingleton(postgreSQLConnectionConfiguration);
 
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IAlmacenRepository, AlmacenRepository>();
-
+builder.Services.AddScoped<IReporteRepository,ReporteRepositories>();
+    
 builder.Services.AddCors(c =>
 {
     c.AddPolicy("MyPolicy", builder =>
@@ -51,16 +53,14 @@ builder.Services.AddSwaggerGen(c =>
                                 Id="Bearer"
                             }
                         },
-                        new string[]{}
+                        Array.Empty<string>()
                     }
                   });
 });
-builder.Services.AddAuthorization(options =>
-{
-    options.DefaultPolicy = new AuthorizationPolicyBuilder(JwtBearerDefaults.AuthenticationScheme)
+builder.Services.AddAuthorizationBuilder()
+    .SetDefaultPolicy(new AuthorizationPolicyBuilder(JwtBearerDefaults.AuthenticationScheme)
     .RequireAuthenticatedUser()
-    .Build();
-});
+    .Build());
 
 var issuer = Configuration["AuthentificactionSettings:Issuer"];
 var audience = Configuration["AuthentificactionSettings:Audience"];
@@ -74,18 +74,17 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         ValidateIssuer = true,
         ValidIssuer = issuer,
         ValidateIssuerSigningKey = true,
-        ValidateLifetime = true,
+        ValidateLifetime = false,
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(signinkey!))
     };
 });
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsProduction())
+if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseDeveloperExceptionPage();
     app.UseSwagger();

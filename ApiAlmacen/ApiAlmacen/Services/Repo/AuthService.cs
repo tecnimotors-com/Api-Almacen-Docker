@@ -1,20 +1,22 @@
-﻿using ApiAlmacen.Services.Interface;
+﻿
 using System.Security.Claims;
 using System.Text;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
+using ApiAlmacen.Services.Interface;
 
 namespace ApiAlmacen.Services.Repo
 {
-    public class AuthService : IAuthService
+    public class AuthService(IConfiguration configuration) : IAuthService
     {
+        private readonly IConfiguration configuration = configuration;
+
         public bool ValidateLogin(string user, string pass)
         {
             return true;
         }
-        public string GenerateToken(DateTime date, string user, TimeSpan validDate, string Password)
+        public string GenerateToken(DateTime date, string user, string Password)
         {
-            var expire = date.Add(validDate);
             var claims = new Claim[]
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user),
@@ -30,13 +32,12 @@ namespace ApiAlmacen.Services.Repo
             new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Password)),
             SecurityAlgorithms.HmacSha256Signature
             );
-
             var jwt = new JwtSecurityToken(
-            issuer: "asmdkasmdkosamdokjqnnoqwnoqnfoqnf",
-            audience: "dsqonqwmovoqnfownoifqnoifnqowfn",
+            issuer: configuration.GetValue<string>("AuthentificactionSettings:Issuer")!,
+            audience: configuration.GetValue<string>("AuthentificactionSettings:Audience")!,
             claims: claims,
             notBefore: date,
-            expires: expire,
+            //expires: expire,
             signingCredentials: signingCredentials
             );
 

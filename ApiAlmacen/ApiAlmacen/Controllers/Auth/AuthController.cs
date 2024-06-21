@@ -6,17 +6,16 @@ namespace ApiAlmacen.Controllers.Auth
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthController : ControllerBase
+    public class AuthController(IAuthService serviceRepository, IConfiguration configuration) : ControllerBase
     {
-        private readonly IAuthService _serviceRepository;
-        public AuthController(IAuthService serviceRepository)
-        {
-            _serviceRepository = serviceRepository;
-        }
+        private readonly IAuthService _serviceRepository = serviceRepository;
+        private readonly IConfiguration configuration = configuration;
+
         [HttpPost("token")]
         public IActionResult Token([FromBody] UserData data)
         {
-            if (data.UserName == "Admin" && data.Password == "asdjnijoqnfenfiwnqdnaspmopdbdyiwqbyuaiwqieuqybAlmacen")
+            if (data.UserName == configuration.GetValue<string>("AuthentificactionSettings:AdminAlmacen")! &&
+              data.Password == configuration.GetValue<string>("AuthentificactionSettings:Signinkey")!)
             {
                 if (_serviceRepository.ValidateLogin(data.UserName, data.Password))
                 {
@@ -24,7 +23,7 @@ namespace ApiAlmacen.Controllers.Auth
                     var expireDate = TimeSpan.FromHours(8);
                     var expireDateTime = date.Add(expireDate);
 
-                    var token = _serviceRepository.GenerateToken(date, data.UserName, expireDate, data.Password);
+                    var token = _serviceRepository.GenerateToken(date, data.UserName, data.Password);
                     return Ok(new
                     {
                         tokenAlmacen = token,

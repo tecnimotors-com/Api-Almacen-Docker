@@ -6,14 +6,10 @@ using Npgsql;
 
 namespace ApiAlmacen.Repository.AlmacenRepository.Repo
 {
-    public class AlmacenRepository : IAlmacenRepository
+    public class AlmacenRepository(PostgreSQLConfiguration connectionString) : IAlmacenRepository
     {
-        private readonly PostgreSQLConfiguration _connectionString;
+        private readonly PostgreSQLConfiguration _connectionString = connectionString;
 
-        public AlmacenRepository(PostgreSQLConfiguration connectionString)
-        {
-            _connectionString = connectionString;
-        }
         protected NpgsqlConnection DbConnection()
         {
             return new NpgsqlConnection(_connectionString.ConnectionString);
@@ -153,9 +149,9 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
             return await db.QueryAsync<TlArticulo>(sql, new { });
         }
 
-	public async Task<IEnumerable<TlArticulo>> ListarArticuloInventarioFamilia(string Limit, string Offset, string Familia)
-	{
-	    var db = DbConnection();
+        public async Task<IEnumerable<TlArticulo>> ListarArticuloInventarioFamilia(string Limit, string Offset, string Familia)
+        {
+            var db = DbConnection();
 
             var sql = @"
                         SELECT distinct codigo_interno 
@@ -165,11 +161,11 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
                         limit '" + Limit + "' offset '" + Offset + "' ;";
 
             return await db.QueryAsync<TlArticulo>(sql, new { });
-	}
+        }
 
-	public async Task<IEnumerable<TlArticulo>> ListarArticuloSubFamilia(string Limit, string Offset, string Familia, string SubFamilia)
-	{
-	    var db = DbConnection();
+        public async Task<IEnumerable<TlArticulo>> ListarArticuloSubFamilia(string Limit, string Offset, string Familia, string SubFamilia)
+        {
+            var db = DbConnection();
 
             var sql = @"
                         SELECT distinct codigo_interno 
@@ -179,7 +175,7 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
                         limit '" + Limit + "' offset '" + Offset + "' ;";
 
             return await db.QueryAsync<TlArticulo>(sql, new { });
-	}
+        }
 
         public async Task<IEnumerable<TlArticulo>> ListarArticuloInventarioFilter(string Limit, string Offset, string Articulo)
         {
@@ -214,7 +210,8 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
                         where codigo_interno = upper('" + Articulo + @"')
                       ;";
 
-            return await db.QueryFirstOrDefaultAsync<TlInventario>(sql, new { codigo_interno = Articulo });
+            var result = await db.QueryFirstOrDefaultAsync<TlInventario>(sql, new { codigo_interno = Articulo });
+            return result!;
         }
 
         public async Task<TlMonthList> ListadoCountCantidad(string Articulo, string Mes1, string Mes2, string Mes3, string Mes4, string Mes5, string Mes6)
@@ -254,7 +251,8 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
                         from public.ventas_anual where TRIM(articulo) = '" + Articulo + @"' and fecha_emitida like '%/" + month6 + @"'
                         ) as month6 
                        ";
-            return await db.QueryFirstOrDefaultAsync<TlMonthList>(sql, new { });
+            var result = await db.QueryFirstOrDefaultAsync<TlMonthList>(sql, new { });
+            return result!;
         }
 
         public async Task<IEnumerable<TlDetallelote>> ListarDetalleLoteImportacion(string Limit, string Offset, string Articulo)
@@ -286,7 +284,8 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
                         (sum(cast(lote as integer)))),6) as totalutilprom
                         from public.lotes_tecnimotors 
                         where codigo like upper('%" + Articulo + "%');";
-            return await db.QueryFirstOrDefaultAsync<TlDetLote>(sql, new { });
+            var result = await db.QueryFirstOrDefaultAsync<TlDetLote>(sql, new { });
+            return result!;
         }
 
         public async Task<TlPedidos> TotalPedidoAnalisis(string Articulo)
@@ -297,7 +296,8 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
                         select * from public.pedidos_importacion
                         where codigo_interno like trim(upper('%" + Articulo + @"%'))
                        ";
-            return await db.QueryFirstOrDefaultAsync<TlPedidos>(sql, new { });
+            var result = await db.QueryFirstOrDefaultAsync<TlPedidos>(sql, new { });
+            return result!;
         }
         /*------------------------------------------------------------------*/
         /*------------------------------------------------------------------*/
@@ -329,7 +329,7 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
 
             return await db.QueryAsync<TlCodiEqui>(sql, new { });
         }
-      /*------------------------------------------------------------------*/
+        /*------------------------------------------------------------------*/
         public async Task<IEnumerable<TlCodiEqui>> FilterCodigoEquiFamilia(string Limit, string Offset, string Familia)
         {
             var db = DbConnection();
@@ -343,8 +343,8 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
 
             return await db.QueryAsync<TlCodiEqui>(sql, new { });
         }
-      /*------------------------------------------------------------------*/
-        public async Task<IEnumerable<TlCodiEqui>> FilterCodigoEquiSubFamilia(string Limit, string Offset, string Familia , string SubFamilia)
+        /*------------------------------------------------------------------*/
+        public async Task<IEnumerable<TlCodiEqui>> FilterCodigoEquiSubFamilia(string Limit, string Offset, string Familia, string SubFamilia)
         {
             var db = DbConnection();
 
@@ -371,7 +371,7 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
 
             return await db.QueryAsync<TlDescrip>(sql, new { });
         }
-	public async Task<IEnumerable<TlDescrip>> FilterDescripcionFamilia(string Limit, string Offset, string Familia)
+        public async Task<IEnumerable<TlDescrip>> FilterDescripcionFamilia(string Limit, string Offset, string Familia)
         {
             var db = DbConnection();
 
@@ -382,7 +382,7 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
                         order by descripcion asc 
                         limit '" + Limit + "' offset '" + Offset + "' ;";
 
-           return await db.QueryAsync<TlDescrip>(sql, new { });
+            return await db.QueryAsync<TlDescrip>(sql, new { });
         }
         public async Task<IEnumerable<TlDescrip>> FilterDescripcionSubFamilia(string Limit, string Offset, string Familia, string SubFamilia)
         {
@@ -421,7 +421,7 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
 
             return await db.QueryAsync<TlProvefilter>(sql, new { });
         }
-	public async Task<IEnumerable<TlProvefilter>> FilterProveedorFamilia(string Limit, string Offset, string Familia)
+        public async Task<IEnumerable<TlProvefilter>> FilterProveedorFamilia(string Limit, string Offset, string Familia)
         {
             var db = DbConnection();
 
@@ -431,9 +431,9 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
                         order by proveedor_nombre asc 
                         limit '" + Limit + "' offset '" + Offset + "' ;";
 
-           return await db.QueryAsync<TlProvefilter>(sql, new { });
+            return await db.QueryAsync<TlProvefilter>(sql, new { });
         }
-	public async Task<IEnumerable<TlProvefilter>> FilterProveedorSubFamilia(string Limit, string Offset, string Familia , string SubFamilia)
+        public async Task<IEnumerable<TlProvefilter>> FilterProveedorSubFamilia(string Limit, string Offset, string Familia, string SubFamilia)
         {
             var db = DbConnection();
 
@@ -443,7 +443,7 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
                         order by proveedor_nombre asc
                         limit '" + Limit + "' offset '" + Offset + "' ;";
 
-           return await db.QueryAsync<TlProvefilter>(sql, new { });
+            return await db.QueryAsync<TlProvefilter>(sql, new { });
         }
     }
 }

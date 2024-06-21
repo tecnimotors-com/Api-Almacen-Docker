@@ -1,19 +1,16 @@
 ﻿using ApiAlmacen.Repository.AlmacenRepository.Interface;
 using ApiAlmacen.Repository.AlmacenRepository.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiAlmacen.Controllers.Almacen
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
-    public class AlmacenController : ControllerBase
+    [Authorize]
+    public class AlmacenController(IAlmacenRepository almacenRepository) : ControllerBase
     {
-        private readonly IAlmacenRepository ialmacenRepository;
-        public AlmacenController(IAlmacenRepository almacenRepository)
-        {
-            ialmacenRepository = almacenRepository;
-        }
+        private readonly IAlmacenRepository ialmacenRepository = almacenRepository;
 
         [HttpPost("RegistrarAlmacen")]
         public async Task<IActionResult> RegistrarAlmacen([FromBody] TrAlmacen trAlmacen)
