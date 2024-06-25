@@ -21,6 +21,7 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Interface
         public Task<TlInventario> DetalleInventarioGeneral(string Articulo);
         public Task<TlMonthList> ListadoCountCantidad(string Articulo, string Mes1, string Mes2, string Mes3, string Mes4, string Mes5, string Mes6);
         public Task<IEnumerable<TlDetallelote>> ListarDetalleLoteImportacion(string Limit, string Offset, string Articulo);
+        public Task<IEnumerable<TlDetallelote>> ListarDetalleLoteImportacionAll(string Articulo);
         public Task<TlDetLote> TotalDetalleLote(string Articulo, string Tc, string Desc, float Igv);
         public Task<TlPedidos> TotalPedidoAnalisis(string Articulo);
         /*------------------------------------------------------------------*/

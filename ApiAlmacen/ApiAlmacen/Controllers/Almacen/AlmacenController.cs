@@ -129,6 +129,14 @@ namespace ApiAlmacen.Controllers.Almacen
             return Ok(result);
         }
 
+        [HttpGet("ListarDetalleLoteImportacionAll/{Articulo}")]
+        public async Task<IActionResult> ListarDetalleLoteImportacionAll(string Articulo)
+        {
+            var result = await ialmacenRepository.ListarDetalleLoteImportacionAll(Articulo);
+
+            return Ok(result);
+        }
+
         [HttpGet("TotalDetalleLote/{Articulo}/{Tc}/{Desc}/{Igv}")]
         public async Task<IActionResult> TotalDetalleLote(string Articulo, string Tc, string Desc, float Igv)
         {

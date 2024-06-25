@@ -271,6 +271,21 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
             return await db.QueryAsync<TlDetallelote>(sql, new { });
         }
 
+        public async Task<IEnumerable<TlDetallelote>> ListarDetalleLoteImportacionAll(string Articulo)
+        {
+            var db = DbConnection();
+
+            var sql = @"
+                        SELECT codigo, equivalente, descripcion, mhfech, importacion, tc, stock_actual, cantidad,
+                        fob, costo_unit, lote, costo_lote, costo_unit_promedio, precio_venta_mn, precio_venta_mn_proy,
+                        dolares, actual, proy, campo1, utilidad_promedio, venta_2024, venta_2023, venta_2022,
+                        venta_2021, venta_2020, venta_2019, venta_2013, flete, mon  
+                        FROM public.lotes_tecnimotors   
+                        where codigo like upper('%" + Articulo + @"%')";
+
+            return await db.QueryAsync<TlDetallelote>(sql, new { });
+        }
+
         public async Task<TlDetLote> TotalDetalleLote(string Articulo, string Tc, string Desc, float Igv)
         {
             var db = DbConnection();
