@@ -135,7 +135,42 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
 
             return await db.QueryAsync<TlInventario>(sql, new { });
         }
+        /*------------------------------------------------------------------------------*/
+        /*------------------------------------------------------------------------------*/
+        public async Task<IEnumerable<TlArticulo>> ListarArticuloInventarioOnly()
+        {
+            var db = DbConnection();
 
+            var sql = @"
+                        SELECT distinct codigo_interno 
+                        FROM public.analisis_inv_general_tecnimotors_2024_04_12 
+                        order by codigo_interno desc ";
+
+            return await db.QueryAsync<TlArticulo>(sql, new { });
+        }
+        public async Task<IEnumerable<TlArticulo>> ListarEquivalentoInventarioOnly()
+        {
+            var db = DbConnection();
+
+            var sql = @"
+                        SELECT distinct codigo_interno, codigo_equivalente
+                        FROM public.analisis_inv_general_tecnimotors_2024_04_12 
+                        order by codigo_interno desc ";
+
+            return await db.QueryAsync<TlArticulo>(sql, new { });
+        }
+        public async Task<IEnumerable<TlArticulo>> ListarDescripcionInventariOnly()
+        {
+            var db = DbConnection();
+
+            var sql = @"
+                        SELECT distinct codigo_interno, codigo_equivalente, descripcion
+                        FROM public.analisis_inv_general_tecnimotors_2024_04_12 
+                        order by codigo_interno desc ";
+
+            return await db.QueryAsync<TlArticulo>(sql, new { });
+        }
+        /*------------------------------------------------------------------------------*/
         public async Task<IEnumerable<TlArticulo>> ListarArticuloInventario(string Limit, string Offset)
         {
             var db = DbConnection();
@@ -148,7 +183,33 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
 
             return await db.QueryAsync<TlArticulo>(sql, new { });
         }
+        public async Task<IEnumerable<TlCodiEqui>> ListarEquivalentoInventario(string Limit, string Offset)
+        {
+            var db = DbConnection();
 
+            var sql = @"
+                        SELECT distinct codigo_interno, codigo_equivalente
+                        FROM public.analisis_inv_general_tecnimotors_2024_04_12 
+                        order by codigo_interno desc 
+                        limit '" + Limit + "' offset '" + Offset + "' ;";
+
+            return await db.QueryAsync<TlCodiEqui>(sql, new { });
+        }
+        public async Task<IEnumerable<TlDescrip>> ListarDescripcionInventario(string Limit, string Offset)
+        {
+            var db = DbConnection();
+
+            var sql = @"
+                        SELECT distinct codigo_interno, codigo_equivalente, descripcion
+                        FROM public.analisis_inv_general_tecnimotors_2024_04_12 
+                        order by codigo_interno desc 
+                        limit '" + Limit + "' offset '" + Offset + "' ;";
+
+            return await db.QueryAsync<TlDescrip>(sql, new { });
+        }
+        /*------------------------------------------------------------------------------*/
+        /*------------------------------------------------------------------------------*/
+        /*------------------------------------------------------------------------------*/
         public async Task<IEnumerable<TlArticulo>> ListarArticuloInventarioFamilia(string Limit, string Offset, string Familia)
         {
             var db = DbConnection();
@@ -156,7 +217,7 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
             var sql = @"
                         SELECT distinct codigo_interno 
                         FROM public.analisis_inv_general_tecnimotors_2024_04_12 
-			where familia_codigo = '" + Familia + @"' 
+            			where familia_codigo = '" + Familia + @"' 
                         order by codigo_interno desc 
                         limit '" + Limit + "' offset '" + Offset + "' ;";
 
@@ -170,8 +231,8 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
             var sql = @"
                         SELECT distinct codigo_interno 
                         FROM public.analisis_inv_general_tecnimotors_2024_04_12 
-			where familia_codigo = '" + Familia + @"' and sub_familia_codigo = '" + SubFamilia + @"' 
-                        order by codigo_interno desc 
+			            where familia_codigo = '" + Familia + "' and sub_familia_codigo = '" + SubFamilia + @"'
+                         order by codigo_interno desc 
                         limit '" + Limit + "' offset '" + Offset + "' ;";
 
             return await db.QueryAsync<TlArticulo>(sql, new { });
@@ -352,8 +413,8 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
             var sql = @"
                         SELECT distinct codigo_interno, codigo_equivalente
                         FROM public.analisis_inv_general_tecnimotors_2024_04_12 
-                        where familia_codigo = '" + Familia + @"' 
-                        order by codigo_equivalente asc
+                        where familia_codigo = '" + Familia + @"'
+                         order by codigo_equivalente asc
                         limit '" + Limit + "' offset '" + Offset + "' ;";
 
             return await db.QueryAsync<TlCodiEqui>(sql, new { });
@@ -366,8 +427,8 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
             var sql = @"
                         SELECT distinct codigo_interno, codigo_equivalente
                         FROM public.analisis_inv_general_tecnimotors_2024_04_12 
-			where familia_codigo = '" + Familia + @"' and sub_familia_codigo = '" + SubFamilia + @"' 
-                        order by codigo_equivalente asc
+			            where familia_codigo = '" + Familia + "' and sub_familia_codigo = '" + SubFamilia + @"'
+                         order by codigo_equivalente asc
                         limit '" + Limit + "' offset '" + Offset + "' ;";
 
             return await db.QueryAsync<TlCodiEqui>(sql, new { });
@@ -393,8 +454,8 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
             var sql = @"
                         SELECT distinct codigo_interno, codigo_equivalente, descripcion 
                         FROM public.analisis_inv_general_tecnimotors_2024_04_12 
-			where familia_codigo = '" + Familia + @"'  
-                        order by descripcion asc 
+			            where familia_codigo = '" + Familia + @"'
+                         order by descripcion asc 
                         limit '" + Limit + "' offset '" + Offset + "' ;";
 
             return await db.QueryAsync<TlDescrip>(sql, new { });
@@ -406,8 +467,8 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
             var sql = @"
                         SELECT distinct codigo_interno, codigo_equivalente, descripcion 
                         FROM public.analisis_inv_general_tecnimotors_2024_04_12 
-                        where familia_codigo = '" + Familia + @"' and sub_familia_codigo = '" + SubFamilia + @"' 
-                        order by descripcion asc 
+                        where familia_codigo = '" + Familia + "' and sub_familia_codigo = '" + SubFamilia + @"'
+                         order by descripcion asc 
                         limit '" + Limit + "' offset '" + Offset + "' ;";
 
             return await db.QueryAsync<TlDescrip>(sql, new { });
@@ -436,14 +497,26 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
 
             return await db.QueryAsync<TlProvefilter>(sql, new { });
         }
+        public async Task<IEnumerable<TlProvefilter>> ListadorProveedorAll()
+        {
+            var db= DbConnection();
+
+            var sql = @"
+                        SELECT distinct proveedor_nombre as proveedor_codigo, proveedor_codigo as proveedor_nombre 
+                        FROM public.analisis_inv_general_tecnimotors_2024_04_12
+                        where proveedor_nombre IS NOT NULL and proveedor_codigo IS NOT NULL
+                        order by proveedor_nombre asc
+                       ";
+            return await db.QueryAsync<TlProvefilter>(sql, new { });
+        }
         public async Task<IEnumerable<TlProvefilter>> FilterProveedorFamilia(string Limit, string Offset, string Familia)
         {
             var db = DbConnection();
 
             var sql = @"
                         SELECT distinct proveedor_nombre, proveedor_codigo FROM public.analisis_inv_general_tecnimotors_2024_04_12 
-			where familia_codigo = '" + Familia + @"'  
-                        order by proveedor_nombre asc 
+			            where familia_codigo = '" + Familia + @"'
+                         order by proveedor_nombre asc 
                         limit '" + Limit + "' offset '" + Offset + "' ;";
 
             return await db.QueryAsync<TlProvefilter>(sql, new { });
@@ -454,8 +527,8 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
 
             var sql = @"
                         SELECT distinct proveedor_nombre, proveedor_codigo FROM public.analisis_inv_general_tecnimotors_2024_04_12
-			where familia_codigo = '" + Familia + @"' and sub_familia_codigo = '" + SubFamilia + @"' 
-                        order by proveedor_nombre asc
+			            where familia_codigo = '" + Familia + "' and sub_familia_codigo = '" + SubFamilia + @"'
+                         order by proveedor_nombre asc
                         limit '" + Limit + "' offset '" + Offset + "' ;";
 
             return await db.QueryAsync<TlProvefilter>(sql, new { });
