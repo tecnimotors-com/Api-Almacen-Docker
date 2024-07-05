@@ -1,6 +1,10 @@
 using ApiAlmacen.Context;
+using ApiAlmacen.Repository.AcumuladoRepository.Interface;
+using ApiAlmacen.Repository.AcumuladoRepository.Repo;
 using ApiAlmacen.Repository.AlmacenRepository.Interface;
 using ApiAlmacen.Repository.AlmacenRepository.Repo;
+using ApiAlmacen.Repository.ProveedorRepository.Interface;
+using ApiAlmacen.Repository.ProveedorRepository.Repo;
 using ApiAlmacen.Repository.ReporteRepository.Interface;
 using ApiAlmacen.Repository.ReporteRepository.Repo;
 using ApiAlmacen.Services.Interface;
@@ -22,8 +26,10 @@ builder.Services.AddSingleton(postgreSQLConnectionConfiguration);
 
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IAlmacenRepository, AlmacenRepository>();
-builder.Services.AddScoped<IReporteRepository,ReporteRepositories>();
-    
+builder.Services.AddScoped<IReporteRepository, ReporteRepositories>();
+builder.Services.AddScoped<IProveedorRepository, ProveedorRepository>();
+builder.Services.AddScoped<IAcumuladoRepository, AcumuladoRepository>();
+
 builder.Services.AddCors(c =>
 {
     c.AddPolicy("MyPolicy", builder =>

@@ -171,17 +171,17 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
             return await db.QueryAsync<TlArticulo>(sql, new { });
         }
         /*------------------------------------------------------------------------------*/
-        public async Task<IEnumerable<TlArticulo>> ListarArticuloInventario(string Limit, string Offset)
+        public async Task<IEnumerable<TlArticuloAcumulado>> ListarArticuloInventario(string Limit, string Offset)
         {
             var db = DbConnection();
 
             var sql = @"
-                        SELECT distinct codigo_interno 
+                        SELECT distinct codigo_interno , descripcion
                         FROM public.analisis_inv_general_tecnimotors_2024_04_12 
                         order by codigo_interno desc 
                         limit '" + Limit + "' offset '" + Offset + "' ;";
 
-            return await db.QueryAsync<TlArticulo>(sql, new { });
+            return await db.QueryAsync<TlArticuloAcumulado>(sql, new { });
         }
         public async Task<IEnumerable<TlCodiEqui>> ListarEquivalentoInventario(string Limit, string Offset)
         {
@@ -210,46 +210,46 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
         /*------------------------------------------------------------------------------*/
         /*------------------------------------------------------------------------------*/
         /*------------------------------------------------------------------------------*/
-        public async Task<IEnumerable<TlArticulo>> ListarArticuloInventarioFamilia(string Limit, string Offset, string Familia)
+        public async Task<IEnumerable<TlArticuloAcumulado>> ListarArticuloInventarioFamilia(string Limit, string Offset, string Familia)
         {
             var db = DbConnection();
 
             var sql = @"
-                        SELECT distinct codigo_interno 
+                        SELECT distinct codigo_interno, descripcion
                         FROM public.analisis_inv_general_tecnimotors_2024_04_12 
             			where familia_codigo = '" + Familia + @"' 
                         order by codigo_interno desc 
                         limit '" + Limit + "' offset '" + Offset + "' ;";
 
-            return await db.QueryAsync<TlArticulo>(sql, new { });
+            return await db.QueryAsync<TlArticuloAcumulado>(sql, new { });
         }
 
-        public async Task<IEnumerable<TlArticulo>> ListarArticuloSubFamilia(string Limit, string Offset, string Familia, string SubFamilia)
+        public async Task<IEnumerable<TlArticuloAcumulado>> ListarArticuloSubFamilia(string Limit, string Offset, string Familia, string SubFamilia)
         {
             var db = DbConnection();
 
             var sql = @"
-                        SELECT distinct codigo_interno 
+                        SELECT distinct codigo_interno ,descripcion
                         FROM public.analisis_inv_general_tecnimotors_2024_04_12 
 			            where familia_codigo = '" + Familia + "' and sub_familia_codigo = '" + SubFamilia + @"'
                          order by codigo_interno desc 
                         limit '" + Limit + "' offset '" + Offset + "' ;";
 
-            return await db.QueryAsync<TlArticulo>(sql, new { });
+            return await db.QueryAsync<TlArticuloAcumulado>(sql, new { });
         }
 
-        public async Task<IEnumerable<TlArticulo>> ListarArticuloInventarioFilter(string Limit, string Offset, string Articulo)
+        public async Task<IEnumerable<TlArticuloAcumulado>> ListarArticuloInventarioFilter(string Limit, string Offset, string Articulo)
         {
             var db = DbConnection();
 
             var sql = @"
-                        SELECT distinct codigo_interno 
+                        SELECT distinct codigo_interno ,descripcion
                         FROM public.analisis_inv_general_tecnimotors_2024_04_12
                         where codigo_interno like upper('%" + Articulo + @"%')  
                         order by codigo_interno desc  
                         limit '" + Limit + "' offset '" + Offset + "' ;";
 
-            return await db.QueryAsync<TlArticulo>(sql, new { });
+            return await db.QueryAsync<TlArticuloAcumulado>(sql, new { });
         }
 
         public async Task<TlInventario> DetalleInventarioGeneral(string Articulo)

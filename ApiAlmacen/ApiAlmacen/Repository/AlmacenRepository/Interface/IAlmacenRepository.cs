@@ -21,13 +21,13 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Interface
         public Task<IEnumerable<TlArticulo>> ListarEquivalentoInventarioOnly();
         public Task<IEnumerable<TlArticulo>> ListarDescripcionInventariOnly();
         /*------------------------------------------------------------------------------*/
-        public Task<IEnumerable<TlArticulo>> ListarArticuloInventario(string Limit, string Offset);
+        public Task<IEnumerable<TlArticuloAcumulado>> ListarArticuloInventario(string Limit, string Offset);
         public Task<IEnumerable<TlCodiEqui>> ListarEquivalentoInventario(string Limit, string Offset);
         public Task<IEnumerable<TlDescrip>> ListarDescripcionInventario(string Limit, string Offset);
         /*------------------------------------------------------------------------------*/
         /*------------------------------------------------------------------------------*/
         /*------------------------------------------------------------------------------*/
-        public Task<IEnumerable<TlArticulo>> ListarArticuloInventarioFilter(string Limit, string Offset, string Articulo);
+        public Task<IEnumerable<TlArticuloAcumulado>> ListarArticuloInventarioFilter(string Limit, string Offset, string Articulo);
         public Task<TlInventario> DetalleInventarioGeneral(string Articulo);
         public Task<TlMonthList> ListadoCountCantidad(string Articulo, string Mes1, string Mes2, string Mes3, string Mes4, string Mes5, string Mes6);
         public Task<IEnumerable<TlDetallelote>> ListarDetalleLoteImportacion(string Limit, string Offset, string Articulo);
@@ -51,9 +51,9 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Interface
         public Task<IEnumerable<TlProvefilter>> FilterProveedorFamilia(string Limit, string Offset, string Familia);
         public Task<IEnumerable<TlProvefilter>> FilterProveedorSubFamilia(string Limit, string Offset, string Familia, string SubFamilia);
         /*------------------------------------------------------------------*/
-        public Task<IEnumerable<TlArticulo>> ListarArticuloInventarioFamilia(string Limit, string Offset, string Familia);
+        public Task<IEnumerable<TlArticuloAcumulado>> ListarArticuloInventarioFamilia(string Limit, string Offset, string Familia);
         /*------------------------------------------------------------------*/
-        public Task<IEnumerable<TlArticulo>> ListarArticuloSubFamilia(string Limit, string Offset, string Familia, string SubFamilia);
+        public Task<IEnumerable<TlArticuloAcumulado>> ListarArticuloSubFamilia(string Limit, string Offset, string Familia, string SubFamilia);
         /*------------------------------------------------------------------*/
         public Task<IEnumerable<TlCodiEqui>> FilterCodigoEquiFamilia(string Limit, string Offset, string Familia);
         public Task<IEnumerable<TlCodiEqui>> FilterCodigoEquiSubFamilia(string Limit, string Offset, string Familia, string SubFamilia);
