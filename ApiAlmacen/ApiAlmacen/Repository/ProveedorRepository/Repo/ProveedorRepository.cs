@@ -19,7 +19,7 @@ namespace ApiAlmacen.Repository.ProveedorRepository.Repo
             var db = DbConnection();
 
             var sql = @"
-                        select codigo_interno,descripcion from public.analisis_inv_general_tecnimotors_2024_04_12 
+                        select codigo_interno, codigo_equivalente, descripcion from public.analisis_inv_general_tecnimotors_2024_04_12 
                         where descripcion is not null 
                         order by codigo_interno desc 
                         limit " + Limit + " offset " + Offset;
@@ -31,7 +31,7 @@ namespace ApiAlmacen.Repository.ProveedorRepository.Repo
             var db = DbConnection();
 
             var sql = @"
-                        select codigo_interno,descripcion from public.analisis_inv_general_tecnimotors_2024_04_12
+                        select codigo_interno, codigo_equivalente, descripcion from public.analisis_inv_general_tecnimotors_2024_04_12
                         where proveedor_nombre= '" + Articulo + @"' and descripcion is not null 
                         order by codigo_interno desc 
                         limit " + Limit + " offset " + Offset;
@@ -43,7 +43,7 @@ namespace ApiAlmacen.Repository.ProveedorRepository.Repo
             var db = DbConnection();
 
             var sql = @"
-                        select codigo_interno,descripcion from public.analisis_inv_general_tecnimotors_2024_04_12
+                        select codigo_interno, codigo_equivalente, descripcion from public.analisis_inv_general_tecnimotors_2024_04_12
                         where  familia_codigo = '" + Familia + @"' and sub_familia_codigo = '" + SubFamilia + @"' and proveedor_nombre= '" + Proveedor + @"' and descripcion is not null 
                         order by codigo_interno desc 
                         limit " + Limit + " offset " + Offset;

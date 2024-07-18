@@ -50,22 +50,81 @@ namespace ApiAlmacen.Repository.ReporteRepository.Repo
                         SELECT idpedido, codigo, codigoequivalente, descripcion,
                         ajustesfecha, promes2024, promes2023, stockpedido, 
                         stockviaje, stockalma, mesesrese, pedidorecom, ordenpedido
-                        FROM public.reportepedido;
+                        FROM public.reportepedido order by codigo asc;
                        ";
             return await db.QueryAsync<Tlreporte>(sql, new { });
         }
 
-        public async Task<IEnumerable<Tlreporte>> ListarReporteFilter(string Codigo)
+        public async Task<Tlreporte> ListarReporteFilter(string Articulo)
         {
             var db = DbConection();
             var sql = @"
-                        SELECT idpedido, codigo, codigoequivalente, descripcion,
+			            SELECT idpedido, codigo, codigoequivalente, descripcion,
                         ajustesfecha, promes2024, promes2023, stockpedido, 
                         stockviaje, stockalma, mesesrese, pedidorecom, ordenpedido
-                        FROM public.reportepedido where codigo = '" + Codigo + @"';
+                        FROM public.reportepedido where codigo = '" + Articulo + @"'
                        ";
 
-            return await db.QueryAsync<Tlreporte>(sql, new { });
+            var result = await db.QueryFirstOrDefaultAsync<Tlreporte>(sql, new { });
+            return result!;
         }
+        public async Task<bool> ActualizarAcumulados(TrReporte trReporte)
+        {
+            var db = DbConection();
+
+            var sql = @"
+                        UPDATE public.reportepedido
+	                    SET 
+	                    codigo=@Codigo,
+	                    codigoequivalente=@Codigoequivalente, 
+	                    descripcion=@Descripcion, 
+	                    ajustesfecha=@Ajustesfecha, 
+	                    promes2024=@Promes2024, 
+	                    promes2023=@Promes2023, 
+	                    stockpedido=@Stockpedido, 
+	                    stockviaje=@Stockviaje, 
+	                    stockalma=@Stockalma,
+	                    mesesrese=@Mesesrese, 
+	                    pedidorecom=@Pedidorecom,
+	                    ordenpedido=@Ordenpedido
+	                    WHERE codigo = @Codigo
+                       ";
+
+            var result = await db.ExecuteAsync(sql, new
+            {
+                trReporte.Idpedido,
+                trReporte.Codigo,
+                trReporte.Codigoequivalente,
+                trReporte.Descripcion,
+                trReporte.Ajustesfecha,
+                trReporte.Promes2024,
+                trReporte.Promes2023,
+                trReporte.Stockpedido,
+                trReporte.Stockviaje,
+                trReporte.Stockalma,
+                trReporte.Mesesrese,
+                trReporte.Pedidorecom,
+                trReporte.Ordenpedido,
+            });
+            return result > 0;
+        }
+        /*  
+    UPDATE public.reportepedido
+	SET 
+	idpedido=?,
+	codigo=?,
+	codigoequivalente=?, 
+	descripcion=?, 
+	ajustesfecha=?, 
+	promes2024=?, 
+	promes2023=?, 
+	stockpedido=?, 
+	stockviaje=?, 
+	stockalma=?,
+	mesesrese=?, 
+	pedidorecom=?,
+	ordenpedido=?
+	WHERE codigo = ''
+         */
     }
 }

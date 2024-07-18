@@ -39,5 +39,15 @@ namespace ApiAlmacen.Controllers.Reporte
             var result = await _reporteRepository.ListarReporteFilter(Codigo);
             return Ok(result);
         }
+        [HttpPut("ActualizarAcumulados")]
+        public async Task<IActionResult> ActualizarAcumulados([FromBody] TrReporte trReporte)
+        {
+            if (trReporte == null)
+                return BadRequest("error 404, Datos Incompletos");
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            var created = await _reporteRepository.ActualizarAcumulados(trReporte);
+            return Created("create", created);
+        }
     }
 }

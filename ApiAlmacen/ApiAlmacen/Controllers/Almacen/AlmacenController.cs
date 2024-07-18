@@ -300,5 +300,12 @@ namespace ApiAlmacen.Controllers.Almacen
             return Ok(result);
         }
         /*------------------------------------------------------------------*/
+        [HttpGet("DetalleImportacion/{Articulo}")]
+        public async Task<IActionResult> DetalleImportacion(string Articulo)
+        {
+            var result = await ialmacenRepository.DetalleImportacion(Articulo);
+
+            return Ok(result);
+        }
     }
 }

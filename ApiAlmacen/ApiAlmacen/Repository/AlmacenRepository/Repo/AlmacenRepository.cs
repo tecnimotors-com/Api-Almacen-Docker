@@ -3,6 +3,7 @@ using ApiAlmacen.Repository.AlmacenRepository.Interface;
 using ApiAlmacen.Repository.AlmacenRepository.Models;
 using Dapper;
 using Npgsql;
+using System.Data.Common;
 
 namespace ApiAlmacen.Repository.AlmacenRepository.Repo
 {
@@ -103,6 +104,16 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
                        ";
             return await db.QueryAsync<TlFamilia>(sql, new { });
         }
+
+        public async Task<IEnumerable<TlFamilia>> ListarFamiliaProveedor(string ProveedorCodigo)
+        {
+            var db = DbConnection();
+            var sql = @"select distinct familia_codigo, familia_descripcion
+                    from public.analisis_inv_general_tecnimotors_2024_04_12 
+                    WHERE familia_codigo IS NOT NULL and proveedor_nombre='" + ProveedorCodigo + @"'  order by familia_codigo desc
+                   ";
+            return await db.QueryAsync<TlFamilia>(sql, new { });
+        }
         public async Task<IEnumerable<TlSubFamilia>> ListarSubFamiliaCodigo(string Familia)
         {
             var db = DbConnection();
@@ -176,7 +187,7 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
             var db = DbConnection();
 
             var sql = @"
-                        SELECT distinct codigo_interno , descripcion
+                        SELECT distinct codigo_interno, codigo_equivalente, descripcion
                         FROM public.analisis_inv_general_tecnimotors_2024_04_12 
                         order by codigo_interno desc 
                         limit '" + Limit + "' offset '" + Offset + "' ;";
@@ -215,7 +226,7 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
             var db = DbConnection();
 
             var sql = @"
-                        SELECT distinct codigo_interno, descripcion
+                        SELECT distinct codigo_interno, codigo_equivalente, descripcion
                         FROM public.analisis_inv_general_tecnimotors_2024_04_12 
             			where familia_codigo = '" + Familia + @"' 
                         order by codigo_interno desc 
@@ -229,7 +240,7 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
             var db = DbConnection();
 
             var sql = @"
-                        SELECT distinct codigo_interno ,descripcion
+                        SELECT distinct codigo_interno, codigo_equivalente, descripcion
                         FROM public.analisis_inv_general_tecnimotors_2024_04_12 
 			            where familia_codigo = '" + Familia + "' and sub_familia_codigo = '" + SubFamilia + @"'
                          order by codigo_interno desc 
@@ -243,7 +254,7 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
             var db = DbConnection();
 
             var sql = @"
-                        SELECT distinct codigo_interno ,descripcion
+                        SELECT distinct codigo_interno, codigo_equivalente, descripcion
                         FROM public.analisis_inv_general_tecnimotors_2024_04_12
                         where codigo_interno like upper('%" + Articulo + @"%')  
                         order by codigo_interno desc  
@@ -499,7 +510,7 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
         }
         public async Task<IEnumerable<TlProvefilter>> ListadorProveedorAll()
         {
-            var db= DbConnection();
+            var db = DbConnection();
 
             var sql = @"
                         SELECT distinct proveedor_nombre as proveedor_codigo, proveedor_codigo as proveedor_nombre 
@@ -533,5 +544,29 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
 
             return await db.QueryAsync<TlProvefilter>(sql, new { });
         }
+        /*----------------------------------------------------------------------------------------------------------*/
+
+        public async Task<TdImportacion> DetalleImportacion(string Articulo)
+        {
+            var db = DbConnection();
+
+            var sql = @"
+                        select codigo, fechaacumulado, nombrepedido, cantidadpedido, nombreviajando, cantidadviajando,
+                        Cast(SUM(cast(cantidadpedido as INT)+ cast(cantidadviajando as INT)) as varchar) as sumaviajando 
+                        from public.importaciones_acumulado where codigo = '" + Articulo + @"'
+                        group by codigo, fechaacumulado, nombrepedido, cantidadpedido, nombreviajando, cantidadviajando
+                       ";
+            var result = await db.QueryFirstOrDefaultAsync<TdImportacion>(sql, new { });
+            return result!;
+        }
+        /*
+        select codigo, fechaacumulado, nombrepedido, cantidadpedido, nombreviajando, cantidadviajando,
+        Cast(SUM(cast(cantidadpedido as INT)+ cast(cantidadviajando as INT)) as varchar) as sumaviajando 
+        from public.importaciones_acumulado where codigo = 'CHN0017518'
+        group by codigo, fechaacumulado, nombrepedido, cantidadpedido, nombreviajando, cantidadviajando  
+        */
+
+
+
     }
 }

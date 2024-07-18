@@ -1,6 +1,10 @@
 using ApiAlmacen.Context;
 using ApiAlmacen.Repository.AcumuladoRepository.Interface;
 using ApiAlmacen.Repository.AcumuladoRepository.Repo;
+using ApiAlmacen.Repository.AdicionalesRepository.Interface;
+using ApiAlmacen.Repository.AdicionalesRepository.Repo;
+using ApiAlmacen.Repository.AlertaRepository.Interface;
+using ApiAlmacen.Repository.AlertaRepository.Repo;
 using ApiAlmacen.Repository.AlmacenRepository.Interface;
 using ApiAlmacen.Repository.AlmacenRepository.Repo;
 using ApiAlmacen.Repository.ProveedorRepository.Interface;
@@ -29,6 +33,8 @@ builder.Services.AddScoped<IAlmacenRepository, AlmacenRepository>();
 builder.Services.AddScoped<IReporteRepository, ReporteRepositories>();
 builder.Services.AddScoped<IProveedorRepository, ProveedorRepository>();
 builder.Services.AddScoped<IAcumuladoRepository, AcumuladoRepository>();
+builder.Services.AddScoped<IAdicionalesRepository,AdicionalesRepositoryy>();
+builder.Services.AddScoped<IAlertaRepository, AlertaRepository>();
 
 builder.Services.AddCors(c =>
 {

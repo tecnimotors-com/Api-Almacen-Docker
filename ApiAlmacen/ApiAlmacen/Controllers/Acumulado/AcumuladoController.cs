@@ -34,7 +34,7 @@ namespace ApiAlmacen.Controllers.Acumulado
                     };
 
                     await _acumuladoRepository.RegistrarAcumulados(model);
-                    Thread.Sleep(1000);
+                    Thread.Sleep(100);
                 }
                 else
                 {
@@ -49,7 +49,7 @@ namespace ApiAlmacen.Controllers.Acumulado
                     };
 
                     await _acumuladoRepository.ActualizarAcumulado(model);
-                    Thread.Sleep(1000);
+                    Thread.Sleep(100);
                 }
             }
             return Ok(new { Message = "Datos recibidos correctamente" });
