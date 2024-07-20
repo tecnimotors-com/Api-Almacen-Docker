@@ -1,11 +1,12 @@
 ﻿using ApiAlmacen.Repository.AlertaRepository.Interface;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiAlmacen.Controllers.Alerta
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class AlertaController(IAlertaRepository IAlertaRepository) : ControllerBase
     {
         private readonly IAlertaRepository ialertarepository = IAlertaRepository;
