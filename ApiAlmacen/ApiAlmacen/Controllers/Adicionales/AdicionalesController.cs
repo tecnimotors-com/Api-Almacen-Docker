@@ -719,7 +719,7 @@ namespace ApiAlmacen.Controllers.Adicionales
 
             Meses(Mes, Anio);
             var result = await ialmacenrepository.DetalleInventarioGeneral(detsear.CodigoInterno!);
-            Thread.Sleep(100);
+            //Thread.Sleep(100);
             var listcountCant = await ialmacenrepository.ListadoCountCantidad(
                 detsear.CodigoInterno!,
                 montcant1,
@@ -729,19 +729,19 @@ namespace ApiAlmacen.Controllers.Adicionales
                 montcant5,
                 montcant6
                 );
-            Thread.Sleep(100);
+            //Thread.Sleep(100);
             var arrayloteDetalle = await ialmacenrepository.ListarDetalleLoteImportacionAll(detsear.CodigoInterno!);
-            Thread.Sleep(100);
+            //Thread.Sleep(100);
             var arraytotal = await ialmacenrepository.TotalDetalleLote(
                 detsear.CodigoInterno!,
                 detsear.Tc!,
                 detsear.Desc!,
                 detsear.Igv!);
-            Thread.Sleep(100);
+            //Thread.Sleep(100);
             var arrayPedido = await ialmacenrepository.TotalPedidoAnalisis(detsear.CodigoInterno!);
-            Thread.Sleep(100);
+            //Thread.Sleep(100);
             var arrayReporte = await ireporterepository.ListarReporteFilter(detsear.CodigoInterno!);
-            Thread.Sleep(100);
+            //Thread.Sleep(100);
             var arraydetalleimp = await ialmacenrepository.DetalleImportacion(detsear.CodigoInterno!);
             Thread.Sleep(100);
 
@@ -749,26 +749,26 @@ namespace ApiAlmacen.Controllers.Adicionales
             {
                 /*---------------------------------------------*/
                 /*---------------------------------------------*/
-                Fechaacumulado = arraydetalleimp.Fechaacumulado,
-                Nombrepedido = arraydetalleimp.Nombrepedido,
-                Cantidadpedido = arraydetalleimp.Cantidadpedido,
-                Nombreviajando = arraydetalleimp.Nombreviajando,
-                Cantidadviajando = arraydetalleimp.Cantidadviajando,
-                Sumaviajando = arraydetalleimp.Sumaviajando,
+                Fechaacumulado = arraydetalleimp == null ? "" : arraydetalleimp.Fechaacumulado,
+                Nombrepedido = arraydetalleimp == null ? "" : arraydetalleimp.Nombrepedido,
+                Cantidadpedido = arraydetalleimp == null ? "" : arraydetalleimp.Cantidadpedido,
+                Nombreviajando = arraydetalleimp == null ? "" : arraydetalleimp.Nombreviajando,
+                Cantidadviajando = arraydetalleimp == null ? "" : arraydetalleimp.Cantidadviajando,
+                Sumaviajando = arraydetalleimp == null ? "" : arraydetalleimp.Sumaviajando,
                 /*---------------------------------------------*/
                 /*---------------------------------------------*/
-                Ajustesfecha = arrayReporte.Ajustesfecha,
-                Promes2024 = arrayReporte.Promes2024,
-                Promes2023 = arrayReporte.Promes2023,
-                Stockpedido = arrayReporte.Stockpedido,
-                Stockviaje = arrayReporte.Stockviaje,
-                Stockalma = arrayReporte.Stockalma,
-                Mesesrese = arrayReporte.Mesesrese,
-                Pedidorecom = arrayReporte.Pedidorecom,
-                Ordenpedido = arrayReporte.Ordenpedido,
+                Ajustesfecha = arrayReporte == null ? "" : arrayReporte.Ajustesfecha,
+                Promes2024 = arrayReporte == null ? "" : arrayReporte.Promes2024,
+                Promes2023 = arrayReporte == null ? "" : arrayReporte.Promes2023,
+                Stockpedido = arrayReporte == null ? "" : arrayReporte.Stockpedido,
+                Stockviaje = arrayReporte == null ? "" : arrayReporte.Stockviaje,
+                Stockalma = arrayReporte == null ? "" : arrayReporte.Stockalma,
+                Mesesrese = arrayReporte == null ? "" : arrayReporte.Mesesrese,
+                Pedidorecom = arrayReporte == null ? "" : arrayReporte.Pedidorecom,
+                Ordenpedido = arrayReporte == null ? "" : arrayReporte.Ordenpedido,
                 /*---------------------------------------------*/
                 /*---------------------------------------------*/
-                Pedido = arrayPedido.Pedido,
+                Pedido = arrayPedido == null ? "" : arrayPedido.Pedido,
                 /*---------------------------------------------*/
                 Month1 = listcountCant.Month1.ToString(),
                 Month2 = listcountCant.Month2.ToString(),

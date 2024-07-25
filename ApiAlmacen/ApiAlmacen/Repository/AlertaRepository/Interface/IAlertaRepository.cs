@@ -6,5 +6,7 @@ namespace ApiAlmacen.Repository.AlertaRepository.Interface
     {
         public Task<IEnumerable<Tlcod>> BusquedaListadoAlerta();
         public Task<IEnumerable<TlAlert>> ListadoaAlertaInventario();
+        public Task<IEnumerable<TlAlert>> StockAlertaInventario();
+        public Task<IEnumerable<TlAlert>> StockAlertaSinVenta();
     }
 }
