@@ -83,8 +83,8 @@ namespace ApiAlmacen.Repository.AlertaRepository.Repo
                         --group by codigo_interno, codigo_equivalente, descripcion, total_stock , prom_venta_2024, precio_vta_actual 
                         --order by (cast(total_stock as decimal)/cast(prom_venta_2024 as decimal)) desc
                         --order by cast(prom_venta_2024 as decimal) desc
-                        --order by cast(total_stock as float) desc
-                        order by codigo_interno desc
+                        order by cast(total_stock as float) desc
+                        --order by codigo_interno desc
                        ";
             return await db.QueryAsync<TlAlert>(sql, new { });
         }
