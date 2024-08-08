@@ -17,28 +17,28 @@ namespace ApiAlmacen.Controllers.Alerta
         private readonly IConfiguration configuration = configuration;
 
 
-        [HttpGet("BusquedaListadoAlerta")]
-        public async Task<IActionResult> BusquedaListadoAlerta()
+        [HttpGet("BusquedaListadoAlerta/{Fecha_upload}")]
+        public async Task<IActionResult> BusquedaListadoAlerta(string Fecha_upload)
         {
-            var result = await ialertarepository.BusquedaListadoAlerta();
+            var result = await ialertarepository.BusquedaListadoAlerta(Fecha_upload);
             return Ok(result);
         }
 
-        [HttpGet("ListadoaAlertaInventario")]
-        public async Task<IActionResult> ListadoaAlertaInventario()
+        [HttpGet("ListadoaAlertaInventario/{Fecha_upload}")]
+        public async Task<IActionResult> ListadoaAlertaInventario(string Fecha_upload)
         {
-            var result = await ialertarepository.ListadoaAlertaInventario();
+            var result = await ialertarepository.ListadoaAlertaInventario(Fecha_upload);
             return Ok(result);
         }
 
         /*--------------------------------------------------------*/
         // Stock inventario promedio menor a 4 
-        [HttpGet("StockAlertaInventario")]
-        public async Task<IActionResult> StockAlertaInventario()
+        [HttpGet("StockAlertaInventario/{Fecha_upload}")]
+        public async Task<IActionResult> StockAlertaInventario(string Fecha_upload)
         {
             try
             {
-                var result = await ialertarepository.StockAlertaInventario();
+                var result = await ialertarepository.StockAlertaInventario(Fecha_upload);
                 Thread.Sleep(100);
                 var directory = Directory.GetCurrentDirectory() + "/ExcelImport/AlertaDiaria.xlsx";
 
@@ -77,7 +77,7 @@ namespace ApiAlmacen.Controllers.Alerta
                 workSheet.Column("E").AdjustToContents();
                 workSheet.SheetView.Freeze(1, 1);
 
-                var resultsinventa = await ialertarepository.StockAlertaSinVenta();
+                var resultsinventa = await ialertarepository.StockAlertaSinVenta(Fecha_upload);
                 Thread.Sleep(100);
                 var workSheet2 = libro.Worksheets.Add("Reporte_Alerta2");
                 workSheet2.Cell("A1").Value = "Codigo Interno";

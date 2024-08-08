@@ -68,8 +68,8 @@ namespace ApiAlmacen.Controllers.Adicionales
             new() { Month = "Diciembre" },
         ];
 
-        [HttpGet("ListarAllIniciales")]
-        public async Task<IActionResult> ListarAllIniciales()
+        [HttpGet("ListarAllIniciales/{Fecha_upload}")]
+        public async Task<IActionResult> ListarAllIniciales(string Fecha_upload)
         {
             var Mes = DateTime.Now.ToString("MM");
             var Anio = DateTime.Now.ToString("yyyy");
@@ -78,9 +78,9 @@ namespace ApiAlmacen.Controllers.Adicionales
 
             int Limit = 250;
             int Offset = 0;
-            var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo();
-            var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor();
-            var arraycodigointerno = await iproveedorrepository.ListadoProveedorAll(Limit, Offset);
+            var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo(Fecha_upload);
+            var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor(Fecha_upload);
+            var arraycodigointerno = await iproveedorrepository.ListadoProveedorAll(Limit, Offset,Fecha_upload);
             Thread.Sleep(100);
 
 
@@ -110,9 +110,10 @@ namespace ApiAlmacen.Controllers.Adicionales
                 {
                     var arraylist = await iadicionalesrepository.ListarAnalisis(
                         tlsearch.Limit,
-                        tlsearch.Offset);
-                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo();
-                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor();
+                        tlsearch.Offset,
+                        tlsearch.Fechaupload!);
+                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo(tlsearch.Fechaupload!);
+                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor(tlsearch.Fechaupload!);
                     Thread.Sleep(100);
 
                     SearchData searchData = new()
@@ -129,10 +130,11 @@ namespace ApiAlmacen.Controllers.Adicionales
                     var arraylist = await iadicionalesrepository.ListarAnalisisFamilia(
                         tlsearch.Limit,
                         tlsearch.Offset,
-                        tlsearch.Familia!);
-                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo();
-                    var arraysubfamily = await ialmacenrepository.ListarSubFamiliaCodigo(tlsearch.Familia!);
-                    var arrayproveedor = await iproveedorrepository.ListadoNgSelectProveedorFamily(tlsearch.Familia!);
+                        tlsearch.Familia!,
+                        tlsearch.Fechaupload!);
+                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo(tlsearch.Fechaupload!);
+                    var arraysubfamily = await ialmacenrepository.ListarSubFamiliaCodigo(tlsearch.Familia!, tlsearch.Fechaupload!);
+                    var arrayproveedor = await iproveedorrepository.ListadoNgSelectProveedorFamily(tlsearch.Familia!, tlsearch.Fechaupload!);
                     Thread.Sleep(100);
 
                     SearchData searchData = new()
@@ -150,10 +152,11 @@ namespace ApiAlmacen.Controllers.Adicionales
                         tlsearch.Limit,
                         tlsearch.Offset,
                         tlsearch.Familia!,
-                        tlsearch.Subfamilia!);
-                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo();
-                    var arraysubfamily = await ialmacenrepository.ListarSubFamiliaCodigo(tlsearch.Familia!);
-                    var arrayproveedor = await iproveedorrepository.ListadoNgSelectProveedorSubFamily(tlsearch.Familia!, tlsearch.Subfamilia!);
+                        tlsearch.Subfamilia!,
+                        tlsearch.Fechaupload!);
+                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo(tlsearch.Fechaupload!);
+                    var arraysubfamily = await ialmacenrepository.ListarSubFamiliaCodigo(tlsearch.Familia!, tlsearch.Fechaupload!);
+                    var arrayproveedor = await iproveedorrepository.ListadoNgSelectProveedorSubFamily(tlsearch.Familia!, tlsearch.Subfamilia!, tlsearch.Fechaupload!);
                     Thread.Sleep(100);
 
                     SearchData searchData = new()
@@ -172,10 +175,11 @@ namespace ApiAlmacen.Controllers.Adicionales
                        tlsearch.Offset,
                        tlsearch.Familia!,
                        tlsearch.Subfamilia!,
-                       tlsearch.Proveedor!);
-                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo();
-                    var arraysubfamily = await ialmacenrepository.ListarSubFamiliaCodigo(tlsearch.Familia!);
-                    var arrayproveedor = await iproveedorrepository.ListadoNgSelectProveedorSubFamily(tlsearch.Familia!, tlsearch.Subfamilia!);
+                       tlsearch.Proveedor!,
+                       tlsearch.Fechaupload!);
+                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo(tlsearch.Fechaupload!);
+                    var arraysubfamily = await ialmacenrepository.ListarSubFamiliaCodigo(tlsearch.Familia!, tlsearch.Fechaupload!);
+                    var arrayproveedor = await iproveedorrepository.ListadoNgSelectProveedorSubFamily(tlsearch.Familia!, tlsearch.Subfamilia!, tlsearch.Fechaupload!);
                     Thread.Sleep(100);
 
                     SearchData searchData = new()
@@ -196,9 +200,10 @@ namespace ApiAlmacen.Controllers.Adicionales
                 {
                     var arraylist = await iadicionalesrepository.ListarAnalisis(
                        tlsearch.Limit,
-                       tlsearch.Offset);
-                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo();
-                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor();
+                       tlsearch.Offset,
+                       tlsearch.Fechaupload!);
+                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo(tlsearch.Fechaupload!);
+                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor(tlsearch.Fechaupload!);
                     Thread.Sleep(100);
 
                     SearchData searchData = new()
@@ -215,9 +220,10 @@ namespace ApiAlmacen.Controllers.Adicionales
                     var arraylist = await iadicionalesrepository.ListarAnalisisProveedor(
                        tlsearch.Limit,
                        tlsearch.Offset,
-                       tlsearch.Proveedor!);
-                    var arrayfamily = await ialmacenrepository.ListarFamiliaProveedor(tlsearch.Proveedor!);
-                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor();
+                       tlsearch.Proveedor!,
+                       tlsearch.Fechaupload!);
+                    var arrayfamily = await ialmacenrepository.ListarFamiliaProveedor(tlsearch.Proveedor!, tlsearch.Fechaupload!);
+                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor(tlsearch.Fechaupload!);
                     Thread.Sleep(100);
 
                     SearchData searchData = new()
@@ -235,10 +241,11 @@ namespace ApiAlmacen.Controllers.Adicionales
                      tlsearch.Limit,
                      tlsearch.Offset,
                      tlsearch.Familia!,
-                     tlsearch.Proveedor!);
-                    var arrayproveedor = await iproveedorrepository.ListadoNgSelectProveedorFamily(tlsearch.Familia!);
-                    var arraysubfamily = await ialmacenrepository.ListarSubFamiliaCodigo(tlsearch.Familia!);
-                    var arrayfamily = await ialmacenrepository.ListarFamiliaProveedor(tlsearch.Proveedor!);
+                     tlsearch.Proveedor!,
+                     tlsearch.Fechaupload!);
+                    var arrayproveedor = await iproveedorrepository.ListadoNgSelectProveedorFamily(tlsearch.Familia!, tlsearch.Fechaupload!);
+                    var arraysubfamily = await ialmacenrepository.ListarSubFamiliaCodigo(tlsearch.Familia!, tlsearch.Fechaupload!);
+                    var arrayfamily = await ialmacenrepository.ListarFamiliaProveedor(tlsearch.Proveedor!, tlsearch.Fechaupload!);
                     Thread.Sleep(100);
 
                     SearchData searchData = new()
@@ -255,9 +262,10 @@ namespace ApiAlmacen.Controllers.Adicionales
                     var arraylist = await iadicionalesrepository.ListarAnalisisProveedor(
                        tlsearch.Limit,
                        tlsearch.Offset,
-                       tlsearch.Proveedor!);
-                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor();
-                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo();
+                       tlsearch.Proveedor!,
+                       tlsearch.Fechaupload!);
+                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor(tlsearch.Fechaupload!);
+                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo(tlsearch.Fechaupload!);
                     Thread.Sleep(100);
 
                     SearchData searchData = new()
@@ -274,9 +282,10 @@ namespace ApiAlmacen.Controllers.Adicionales
                     var arraylist = await iadicionalesrepository.ListarAnalisisProveedor(
                      tlsearch.Limit,
                      tlsearch.Offset,
-                     tlsearch.Proveedor!);
-                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor();
-                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo();
+                     tlsearch.Proveedor!,
+                     tlsearch.Fechaupload!);
+                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor(tlsearch.Fechaupload!);
+                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo(tlsearch.Fechaupload!);
                     Thread.Sleep(100);
 
                     SearchData searchData = new()
@@ -295,9 +304,10 @@ namespace ApiAlmacen.Controllers.Adicionales
                 {
                     var arraylist = await iadicionalesrepository.ListarAnalisis(
                         tlsearch.Limit,
-                        tlsearch.Offset);
-                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo();
-                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor();
+                        tlsearch.Offset,
+                        tlsearch.Fechaupload!);
+                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo(tlsearch.Fechaupload!);
+                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor(tlsearch.Fechaupload!);
                     Thread.Sleep(100);
 
                     SearchData searchData = new()
@@ -314,10 +324,11 @@ namespace ApiAlmacen.Controllers.Adicionales
                     var arraylist = await iadicionalesrepository.ListarAnalisisFamilia(
                         tlsearch.Limit,
                         tlsearch.Offset,
-                        tlsearch.Familia!);
-                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo();
-                    var arraysubfamily = await ialmacenrepository.ListarSubFamiliaCodigo(tlsearch.Familia!);
-                    var arrayproveedor = await iproveedorrepository.ListadoNgSelectProveedorFamily(tlsearch.Familia!);
+                        tlsearch.Familia!,
+                        tlsearch.Fechaupload!);
+                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo(tlsearch.Fechaupload!);
+                    var arraysubfamily = await ialmacenrepository.ListarSubFamiliaCodigo(tlsearch.Familia!, tlsearch.Fechaupload!);
+                    var arrayproveedor = await iproveedorrepository.ListadoNgSelectProveedorFamily(tlsearch.Familia!, tlsearch.Fechaupload!);
                     Thread.Sleep(100);
 
                     SearchData searchData = new()
@@ -335,10 +346,11 @@ namespace ApiAlmacen.Controllers.Adicionales
                         tlsearch.Limit,
                         tlsearch.Offset,
                         tlsearch.Familia!,
-                        tlsearch.Subfamilia!);
-                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo();
-                    var arraysubfamily = await ialmacenrepository.ListarSubFamiliaCodigo(tlsearch.Familia!);
-                    var arrayproveedor = await iproveedorrepository.ListadoNgSelectProveedorSubFamily(tlsearch.Familia!, tlsearch.Subfamilia!);
+                        tlsearch.Subfamilia!,
+                        tlsearch.Fechaupload!);
+                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo(tlsearch.Fechaupload!);
+                    var arraysubfamily = await ialmacenrepository.ListarSubFamiliaCodigo(tlsearch.Familia!, tlsearch.Fechaupload!);
+                    var arrayproveedor = await iproveedorrepository.ListadoNgSelectProveedorSubFamily(tlsearch.Familia!, tlsearch.Subfamilia!, tlsearch.Fechaupload!);
                     Thread.Sleep(100);
 
                     SearchData searchData = new()
@@ -357,10 +369,11 @@ namespace ApiAlmacen.Controllers.Adicionales
                        tlsearch.Offset,
                        tlsearch.Familia!,
                        tlsearch.Subfamilia!,
-                       tlsearch.Proveedor!);
-                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo();
-                    var arraysubfamily = await ialmacenrepository.ListarSubFamiliaCodigo(tlsearch.Familia!);
-                    var arrayproveedor = await iproveedorrepository.ListadoNgSelectProveedorSubFamily(tlsearch.Familia!, tlsearch.Subfamilia!);
+                       tlsearch.Proveedor!,
+                       tlsearch.Fechaupload!);
+                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo(tlsearch.Fechaupload!);
+                    var arraysubfamily = await ialmacenrepository.ListarSubFamiliaCodigo(tlsearch.Familia!, tlsearch.Fechaupload!);
+                    var arrayproveedor = await iproveedorrepository.ListadoNgSelectProveedorSubFamily(tlsearch.Familia!, tlsearch.Subfamilia!, tlsearch.Fechaupload!);
                     Thread.Sleep(100);
 
                     SearchData searchData = new()
@@ -381,9 +394,10 @@ namespace ApiAlmacen.Controllers.Adicionales
                 {
                     var arraylist = await iadicionalesrepository.ListarAnalisis(
                        tlsearch.Limit,
-                       tlsearch.Offset);
-                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo();
-                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor();
+                       tlsearch.Offset,
+                       tlsearch.Fechaupload!);
+                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo(tlsearch.Fechaupload!);
+                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor(tlsearch.Fechaupload!);
                     Thread.Sleep(100);
 
                     SearchData searchData = new()
@@ -400,9 +414,10 @@ namespace ApiAlmacen.Controllers.Adicionales
                     var arraylist = await iadicionalesrepository.ListarAnalisisProveedor(
                        tlsearch.Limit,
                        tlsearch.Offset,
-                       tlsearch.Proveedor!);
-                    var arrayfamily = await ialmacenrepository.ListarFamiliaProveedor(tlsearch.Proveedor!);
-                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor();
+                       tlsearch.Proveedor!,
+                       tlsearch.Fechaupload!);
+                    var arrayfamily = await ialmacenrepository.ListarFamiliaProveedor(tlsearch.Proveedor!, tlsearch.Fechaupload!);
+                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor(tlsearch.Fechaupload!);
                     Thread.Sleep(100);
 
                     SearchData searchData = new()
@@ -420,10 +435,11 @@ namespace ApiAlmacen.Controllers.Adicionales
                      tlsearch.Limit,
                      tlsearch.Offset,
                      tlsearch.Familia!,
-                     tlsearch.Proveedor!);
-                    var arrayproveedor = await iproveedorrepository.ListadoNgSelectProveedorFamily(tlsearch.Familia!);
-                    var arraysubfamily = await ialmacenrepository.ListarSubFamiliaCodigo(tlsearch.Familia!);
-                    var arrayfamily = await ialmacenrepository.ListarFamiliaProveedor(tlsearch.Proveedor!);
+                     tlsearch.Proveedor!,
+                     tlsearch.Fechaupload!);
+                    var arrayproveedor = await iproveedorrepository.ListadoNgSelectProveedorFamily(tlsearch.Familia!, tlsearch.Fechaupload!);
+                    var arraysubfamily = await ialmacenrepository.ListarSubFamiliaCodigo(tlsearch.Familia!, tlsearch.Fechaupload!);
+                    var arrayfamily = await ialmacenrepository.ListarFamiliaProveedor(tlsearch.Proveedor!, tlsearch.Fechaupload!);
                     Thread.Sleep(100);
 
                     SearchData searchData = new()
@@ -440,9 +456,10 @@ namespace ApiAlmacen.Controllers.Adicionales
                     var arraylist = await iadicionalesrepository.ListarAnalisisProveedor(
                        tlsearch.Limit,
                        tlsearch.Offset,
-                       tlsearch.Proveedor!);
-                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor();
-                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo();
+                       tlsearch.Proveedor!,
+                       tlsearch.Fechaupload!);
+                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor(tlsearch.Fechaupload!);
+                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo(tlsearch.Fechaupload!);
                     Thread.Sleep(100);
 
                     SearchData searchData = new()
@@ -459,9 +476,10 @@ namespace ApiAlmacen.Controllers.Adicionales
                     var arraylist = await iadicionalesrepository.ListarAnalisisProveedor(
                      tlsearch.Limit,
                      tlsearch.Offset,
-                     tlsearch.Proveedor!);
-                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor();
-                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo();
+                     tlsearch.Proveedor!,
+                     tlsearch.Fechaupload!);
+                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor(tlsearch.Fechaupload!);
+                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo(tlsearch.Fechaupload!);
                     Thread.Sleep(100);
 
                     SearchData searchData = new()
@@ -480,9 +498,10 @@ namespace ApiAlmacen.Controllers.Adicionales
                 {
                     var arraylist = await iadicionalesrepository.ListarAnalisis(
                         tlsearch.Limit,
-                        tlsearch.Offset);
-                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo();
-                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor();
+                        tlsearch.Offset,
+                        tlsearch.Fechaupload!);
+                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo(tlsearch.Fechaupload!);
+                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor(tlsearch.Fechaupload!);
                     Thread.Sleep(100);
 
                     SearchData searchData = new()
@@ -499,10 +518,11 @@ namespace ApiAlmacen.Controllers.Adicionales
                     var arraylist = await iadicionalesrepository.ListarAnalisisFamilia(
                         tlsearch.Limit,
                         tlsearch.Offset,
-                        tlsearch.Familia!);
-                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo();
-                    var arraysubfamily = await ialmacenrepository.ListarSubFamiliaCodigo(tlsearch.Familia!);
-                    var arrayproveedor = await iproveedorrepository.ListadoNgSelectProveedorFamily(tlsearch.Familia!);
+                        tlsearch.Familia!,
+                        tlsearch.Fechaupload!);
+                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo(tlsearch.Fechaupload!);
+                    var arraysubfamily = await ialmacenrepository.ListarSubFamiliaCodigo(tlsearch.Familia!, tlsearch.Fechaupload!);
+                    var arrayproveedor = await iproveedorrepository.ListadoNgSelectProveedorFamily(tlsearch.Familia!, tlsearch.Fechaupload!);
                     Thread.Sleep(100);
 
                     SearchData searchData = new()
@@ -520,10 +540,11 @@ namespace ApiAlmacen.Controllers.Adicionales
                         tlsearch.Limit,
                         tlsearch.Offset,
                         tlsearch.Familia!,
-                        tlsearch.Subfamilia!);
-                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo();
-                    var arraysubfamily = await ialmacenrepository.ListarSubFamiliaCodigo(tlsearch.Familia!);
-                    var arrayproveedor = await iproveedorrepository.ListadoNgSelectProveedorSubFamily(tlsearch.Familia!, tlsearch.Subfamilia!);
+                        tlsearch.Subfamilia!,
+                        tlsearch.Fechaupload!);
+                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo(tlsearch.Fechaupload!);
+                    var arraysubfamily = await ialmacenrepository.ListarSubFamiliaCodigo(tlsearch.Familia!, tlsearch.Fechaupload!);
+                    var arrayproveedor = await iproveedorrepository.ListadoNgSelectProveedorSubFamily(tlsearch.Familia!, tlsearch.Subfamilia!, tlsearch.Fechaupload!);
                     Thread.Sleep(100);
 
                     SearchData searchData = new()
@@ -542,10 +563,11 @@ namespace ApiAlmacen.Controllers.Adicionales
                        tlsearch.Offset,
                        tlsearch.Familia!,
                        tlsearch.Subfamilia!,
-                       tlsearch.Proveedor!);
-                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo();
-                    var arraysubfamily = await ialmacenrepository.ListarSubFamiliaCodigo(tlsearch.Familia!);
-                    var arrayproveedor = await iproveedorrepository.ListadoNgSelectProveedorSubFamily(tlsearch.Familia!, tlsearch.Subfamilia!);
+                       tlsearch.Proveedor!,
+                       tlsearch.Fechaupload!);
+                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo(tlsearch.Fechaupload!);
+                    var arraysubfamily = await ialmacenrepository.ListarSubFamiliaCodigo(tlsearch.Familia!, tlsearch.Fechaupload!);
+                    var arrayproveedor = await iproveedorrepository.ListadoNgSelectProveedorSubFamily(tlsearch.Familia!, tlsearch.Subfamilia!, tlsearch.Fechaupload!);
                     Thread.Sleep(100);
 
                     SearchData searchData = new()
@@ -566,9 +588,10 @@ namespace ApiAlmacen.Controllers.Adicionales
                 {
                     var arraylist = await iadicionalesrepository.ListarAnalisis(
                        tlsearch.Limit,
-                       tlsearch.Offset);
-                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo();
-                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor();
+                       tlsearch.Offset,
+                       tlsearch.Fechaupload!);
+                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo(tlsearch.Fechaupload!);
+                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor(tlsearch.Fechaupload!);
                     Thread.Sleep(100);
 
                     SearchData searchData = new()
@@ -585,9 +608,10 @@ namespace ApiAlmacen.Controllers.Adicionales
                     var arraylist = await iadicionalesrepository.ListarAnalisisProveedor(
                        tlsearch.Limit,
                        tlsearch.Offset,
-                       tlsearch.Proveedor!);
-                    var arrayfamily = await ialmacenrepository.ListarFamiliaProveedor(tlsearch.Proveedor!);
-                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor();
+                       tlsearch.Proveedor!,
+                       tlsearch.Fechaupload!);
+                    var arrayfamily = await ialmacenrepository.ListarFamiliaProveedor(tlsearch.Proveedor!, tlsearch.Fechaupload!);
+                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor(tlsearch.Fechaupload!);
                     Thread.Sleep(100);
 
                     SearchData searchData = new()
@@ -605,10 +629,11 @@ namespace ApiAlmacen.Controllers.Adicionales
                      tlsearch.Limit,
                      tlsearch.Offset,
                      tlsearch.Familia!,
-                     tlsearch.Proveedor!);
-                    var arrayproveedor = await iproveedorrepository.ListadoNgSelectProveedorFamily(tlsearch.Familia!);
-                    var arraysubfamily = await ialmacenrepository.ListarSubFamiliaCodigo(tlsearch.Familia!);
-                    var arrayfamily = await ialmacenrepository.ListarFamiliaProveedor(tlsearch.Proveedor!);
+                     tlsearch.Proveedor!,
+                     tlsearch.Fechaupload!);
+                    var arrayproveedor = await iproveedorrepository.ListadoNgSelectProveedorFamily(tlsearch.Familia!, tlsearch.Fechaupload!);
+                    var arraysubfamily = await ialmacenrepository.ListarSubFamiliaCodigo(tlsearch.Familia!, tlsearch.Fechaupload!);
+                    var arrayfamily = await ialmacenrepository.ListarFamiliaProveedor(tlsearch.Proveedor!, tlsearch.Fechaupload!);
                     Thread.Sleep(100);
 
                     SearchData searchData = new()
@@ -625,9 +650,10 @@ namespace ApiAlmacen.Controllers.Adicionales
                     var arraylist = await iadicionalesrepository.ListarAnalisisProveedor(
                        tlsearch.Limit,
                        tlsearch.Offset,
-                       tlsearch.Proveedor!);
-                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor();
-                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo();
+                       tlsearch.Proveedor!,
+                       tlsearch.Fechaupload!);
+                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor(tlsearch.Fechaupload!);
+                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo(tlsearch.Fechaupload!);
                     Thread.Sleep(100);
 
                     SearchData searchData = new()
@@ -644,9 +670,10 @@ namespace ApiAlmacen.Controllers.Adicionales
                     var arraylist = await iadicionalesrepository.ListarAnalisisProveedor(
                      tlsearch.Limit,
                      tlsearch.Offset,
-                     tlsearch.Proveedor!);
-                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor();
-                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo();
+                     tlsearch.Proveedor!,
+                     tlsearch.Fechaupload!);
+                    var arrayproveedor = await iproveedorrepository.ListadoNgselectProveedor(tlsearch.Fechaupload!);
+                    var arrayfamily = await ialmacenrepository.ListarFamiliaCodigo(tlsearch.Fechaupload!);
                     Thread.Sleep(100);
 
                     SearchData searchData = new()
@@ -674,7 +701,8 @@ namespace ApiAlmacen.Controllers.Adicionales
                 var arrayCodigoInterno = await ialmacenrepository.ListarArticuloInventarioFilter(
                     tlbusqueda.Limit.ToString(),
                     tlbusqueda.Offset.ToString(),
-                    tlbusqueda.CodigoArticulo!);
+                    tlbusqueda.CodigoArticulo!,
+                    tlbusqueda.Fechaupload!);
                 Thread.Sleep(100);
                 return Ok(arrayCodigoInterno);
             }
@@ -683,7 +711,8 @@ namespace ApiAlmacen.Controllers.Adicionales
                 var arrayCodigoInterno = await ialmacenrepository.FilterCodigoEqui(
                     tlbusqueda.Limit.ToString(),
                     tlbusqueda.Offset.ToString(),
-                    tlbusqueda.CodigoArticulo!);
+                    tlbusqueda.CodigoArticulo!,
+                    tlbusqueda.Fechaupload!);
                 Thread.Sleep(100);
                 return Ok(arrayCodigoInterno);
             }
@@ -692,7 +721,8 @@ namespace ApiAlmacen.Controllers.Adicionales
                 var arrayDescripcion = await ialmacenrepository.FilterDescripcion(
                 tlbusqueda.Limit.ToString(),
                 tlbusqueda.Offset.ToString(),
-                tlbusqueda.CodigoArticulo!);
+                tlbusqueda.CodigoArticulo!,
+                tlbusqueda.Fechaupload!);
                 Thread.Sleep(100);
                 return Ok(arrayDescripcion);
             }
@@ -718,7 +748,7 @@ namespace ApiAlmacen.Controllers.Adicionales
             var Anio = DateTime.Now.ToString("yy");
 
             Meses(Mes, Anio);
-            var result = await ialmacenrepository.DetalleInventarioGeneral(detsear.CodigoInterno!);
+            var result = await ialmacenrepository.DetalleInventarioGeneral(detsear.CodigoInterno!, detsear.Fechaupload!);
             //Thread.Sleep(100);
             var listcountCant = await ialmacenrepository.ListadoCountCantidad(
                 detsear.CodigoInterno!,
@@ -730,13 +760,13 @@ namespace ApiAlmacen.Controllers.Adicionales
                 montcant6
                 );
             //Thread.Sleep(100);
-            var arrayloteDetalle = await ialmacenrepository.ListarDetalleLoteImportacionAll(detsear.CodigoInterno!);
+            var arrayloteDetalle = await ialmacenrepository.ListarDetalleLoteImportacionAll(detsear.CodigoInterno!, detsear.Fechaupload!);
             //Thread.Sleep(100);
             var arraytotal = await ialmacenrepository.TotalDetalleLote(
                 detsear.CodigoInterno!,
                 detsear.Tc!,
                 detsear.Desc!,
-                detsear.Igv!);
+                detsear.Igv!, detsear.Fechaupload!);
             //Thread.Sleep(100);
             var arrayPedido = await ialmacenrepository.TotalPedidoAnalisis(detsear.CodigoInterno!);
             //Thread.Sleep(100);
@@ -1051,6 +1081,7 @@ namespace ApiAlmacen.Controllers.Adicionales
         public string? Tc { get; set; }
         public string? Desc { get; set; }
         public float Igv { get; set; }
+        public string? Fechaupload { get; set; }
     }
     public class DetailArticulo
     {
@@ -1159,6 +1190,7 @@ namespace ApiAlmacen.Controllers.Adicionales
         public int Limit { get; set; }
         public int Offset { get; set; }
         public string? CodigoArticulo { get; set; }
+        public string? Fechaupload { get; set; }
     }
     public class TlSearchCodigo
     {
@@ -1168,6 +1200,7 @@ namespace ApiAlmacen.Controllers.Adicionales
         public string? Proveedor { get; set; }
         public int Limit { get; set; }
         public int Offset { get; set; }
+        public string? Fechaupload { get; set; }
     }
     public class TlAllData
     {

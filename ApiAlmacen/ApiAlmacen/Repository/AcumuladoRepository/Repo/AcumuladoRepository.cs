@@ -6,9 +6,10 @@ using Npgsql;
 
 namespace ApiAlmacen.Repository.AcumuladoRepository.Repo
 {
-    public class AcumuladoRepository(PostgreSQLConfiguration connectionString) : IAcumuladoRepository
+    public class AcumuladoRepository(PostgreSQLConfiguration connectionString, IConfiguration configuration) : IAcumuladoRepository
     {
         private readonly PostgreSQLConfiguration _connectionString = connectionString;
+        private readonly IConfiguration configuration = configuration;
         protected NpgsqlConnection DbConnection()
         {
             return new NpgsqlConnection(_connectionString.ConnectionString);
@@ -17,7 +18,7 @@ namespace ApiAlmacen.Repository.AcumuladoRepository.Repo
         {
             var db = DbConnection();
             var sql = @"
-                        INSERT INTO public.importaciones_acumulado(
+                        INSERT INTO public."+ configuration.GetValue<string>("BdProduccion:analisis_importacion")!+ @"(
                     	codigo, fechaacumulado, nombrepedido, cantidadpedido,
                         nombreviajando, cantidadviajando)
 	                    VALUES (@Codigo, @Fechaacumulado, @Nombrepedido,
@@ -39,7 +40,7 @@ namespace ApiAlmacen.Repository.AcumuladoRepository.Repo
         {
             var db = DbConnection();
             var sql = @"
-                        select codigo from public.importaciones_acumulado where codigo = '" + Codigo + "'";
+                        select codigo from public."+ configuration.GetValue<string>("BdProduccion:analisis_importacion")!+ @" where codigo = '" + Codigo + "'";
 
             var result = await db.QueryFirstOrDefaultAsync<TlfilterAcumulado>(sql, new { });
             return result!;
@@ -48,7 +49,7 @@ namespace ApiAlmacen.Repository.AcumuladoRepository.Repo
         {
             var db = DbConnection();
             var sql = @"
-                        UPDATE public.importaciones_acumulado
+                        UPDATE public."+ configuration.GetValue<string>("BdProduccion:analisis_importacion")!+ @"
 	                    SET
                         fechaacumulado=@Fechaacumulado,
                         nombrepedido=@Nombrepedido,

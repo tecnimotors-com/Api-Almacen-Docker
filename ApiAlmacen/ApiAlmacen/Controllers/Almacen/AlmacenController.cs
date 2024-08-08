@@ -48,106 +48,106 @@ namespace ApiAlmacen.Controllers.Almacen
             return Ok(result);
         }
 
-        [HttpGet("ListarAnalisisCostosInventario/{Limit}/{Offset}")]
-        public async Task<IActionResult> ListarAnalisisCostosInventario(string Limit, string Offset)
+        [HttpGet("ListarAnalisisCostosInventario/{Limit}/{Offset}/{Fecha_upload}")]
+        public async Task<IActionResult> ListarAnalisisCostosInventario(string Limit, string Offset,string Fecha_upload)
         {
-            var result = await ialmacenRepository.ListarAnalisisCostosInventario(Limit, Offset);
+            var result = await ialmacenRepository.ListarAnalisisCostosInventario(Limit, Offset, Fecha_upload);
 
             return Ok(result);
         }
 
-        [HttpGet("ListarFamiliaCodigo")]
-        public async Task<IActionResult> ListarFamiliaCodigo()
+        [HttpGet("ListarFamiliaCodigo/{Fecha_upload}")]
+        public async Task<IActionResult> ListarFamiliaCodigo(string Fecha_upload)
         {
-            var result = await ialmacenRepository.ListarFamiliaCodigo();
+            var result = await ialmacenRepository.ListarFamiliaCodigo(Fecha_upload);
 
             return Ok(result);
         }
 
-        [HttpGet("ListarSubFamiliaCodigo")]
-        public async Task<IActionResult> ListarSubFamiliaCodigo(string Familia)
+        [HttpGet("ListarSubFamiliaCodigo/{Fecha_upload}")]
+        public async Task<IActionResult> ListarSubFamiliaCodigo(string Familia,string Fecha_upload)
         {
-            var result = await ialmacenRepository.ListarSubFamiliaCodigo(Familia);
+            var result = await ialmacenRepository.ListarSubFamiliaCodigo(Familia, Fecha_upload);
 
             return Ok(result);
         }
         /*------------------------------------------------------------------------------*/
         /*------------------------------------------------------------------------------*/
-        [HttpGet("ListarArticuloInventarioOnly")]
-        public async Task<IActionResult> ListarArticuloInventarioOnly()
+        [HttpGet("ListarArticuloInventarioOnly/{Fecha_upload}")]
+        public async Task<IActionResult> ListarArticuloInventarioOnly(string Fecha_upload)
         {
-            var result = await ialmacenRepository.ListarArticuloInventarioOnly();
+            var result = await ialmacenRepository.ListarArticuloInventarioOnly(Fecha_upload);
 
             return Ok(result);
         }
-        [HttpGet("ListarEquivalentoInventarioOnly")]
-        public async Task<IActionResult> ListarEquivalentoInventarioOnly()
+        [HttpGet("ListarEquivalentoInventarioOnly/{Fecha_upload}")]
+        public async Task<IActionResult> ListarEquivalentoInventarioOnly(string Fecha_upload)
         { 
-            var result = await ialmacenRepository.ListarEquivalentoInventarioOnly();
+            var result = await ialmacenRepository.ListarEquivalentoInventarioOnly(Fecha_upload);
 
             return Ok(result);
         }
-        [HttpGet("ListarDescripcionInventariOnly")]
-        public async Task<IActionResult> ListarDescripcionInventariOnly()
+        [HttpGet("ListarDescripcionInventariOnly/{Fecha_upload}")]
+        public async Task<IActionResult> ListarDescripcionInventariOnly(string Fecha_upload)
         {
-            var result = await ialmacenRepository.ListarDescripcionInventariOnly();
-
-            return Ok(result);
-        }
-        /*------------------------------------------------------------------------------*/
-        [HttpGet("ListarArticuloInventario/{Limit}/{Offset}")]
-        public async Task<IActionResult> ListarArticuloInventario(string Limit, string Offset)
-        {
-            var result = await ialmacenRepository.ListarArticuloInventario(Limit, Offset);
-
-            return Ok(result);
-        }
-        [HttpGet("ListarEquivalentoInventario/{Limit}/{Offset}")]
-        public async Task<IActionResult> ListarEquivalentoInventario(string Limit, string Offset)
-        {
-            var result = await ialmacenRepository.ListarEquivalentoInventario(Limit, Offset);
-
-            return Ok(result);
-        }
-        [HttpGet("ListarDescripcionInventario/{Limit}/{Offset}")]
-        public async Task<IActionResult> ListarDescripcionInventario(string Limit, string Offset)
-        {
-            var result = await ialmacenRepository.ListarDescripcionInventario(Limit, Offset);
+            var result = await ialmacenRepository.ListarDescripcionInventariOnly(Fecha_upload);
 
             return Ok(result);
         }
         /*------------------------------------------------------------------------------*/
+        [HttpGet("ListarArticuloInventario/{Limit}/{Offset}/{Fecha_upload}")]
+        public async Task<IActionResult> ListarArticuloInventario(string Limit, string Offset,string Fecha_upload)
+        {
+            var result = await ialmacenRepository.ListarArticuloInventario(Limit, Offset, Fecha_upload);
+
+            return Ok(result);
+        }
+        [HttpGet("ListarEquivalentoInventario/{Limit}/{Offset}/{Fecha_upload}")]
+        public async Task<IActionResult> ListarEquivalentoInventario(string Limit, string Offset, string Fecha_upload)
+        {
+            var result = await ialmacenRepository.ListarEquivalentoInventario(Limit, Offset, Fecha_upload);
+
+            return Ok(result);
+        }
+        [HttpGet("ListarDescripcionInventario/{Limit}/{Offset}/{Fecha_upload}")]
+        public async Task<IActionResult> ListarDescripcionInventario(string Limit, string Offset,string Fecha_upload)
+        {
+            var result = await ialmacenRepository.ListarDescripcionInventario(Limit, Offset, Fecha_upload);
+
+            return Ok(result);
+        }
         /*------------------------------------------------------------------------------*/
         /*------------------------------------------------------------------------------*/
-        [HttpGet("ListarArticuloInventarioFamilia/{Limit}/{Offset}/{Familia}")]
-        public async Task<IActionResult> ListarArticuloInventarioFamilia(string Limit, string Offset, string Familia)
+        /*------------------------------------------------------------------------------*/
+        [HttpGet("ListarArticuloInventarioFamilia/{Limit}/{Offset}/{Familia}/{Fecha_upload}")]
+        public async Task<IActionResult> ListarArticuloInventarioFamilia(string Limit, string Offset, string Familia,string Fecha_upload)
         {
-            var result = await ialmacenRepository.ListarArticuloInventarioFamilia(Limit, Offset, Familia);
+            var result = await ialmacenRepository.ListarArticuloInventarioFamilia(Limit, Offset, Familia, Fecha_upload);
 
             return Ok(result);
         }
 
-        [HttpGet("ListarArticuloSubFamilia/{Limit}/{Offset}/{Familia}/{SubFamilia}")]
-        public async Task<IActionResult> ListarArticuloSubFamilia(string Limit, string Offset, string Familia, string SubFamilia)
+        [HttpGet("ListarArticuloSubFamilia/{Limit}/{Offset}/{Familia}/{SubFamilia}/{Fecha_upload}")]
+        public async Task<IActionResult> ListarArticuloSubFamilia(string Limit, string Offset, string Familia, string SubFamilia,string Fecha_upload)
         {
-            var result = await ialmacenRepository.ListarArticuloSubFamilia(Limit, Offset, Familia, SubFamilia);
+            var result = await ialmacenRepository.ListarArticuloSubFamilia(Limit, Offset, Familia, SubFamilia, Fecha_upload);
 
             return Ok(result);
         }
 
 
-        [HttpGet("ListarArticuloInventarioFilter/{Limit}/{Offset}/{Articulo}")]
-        public async Task<IActionResult> ListarArticuloInventarioFilter(string Limit, string Offset, string Articulo)
+        [HttpGet("ListarArticuloInventarioFilter/{Limit}/{Offset}/{Articulo}/{Fecha_upload}")]
+        public async Task<IActionResult> ListarArticuloInventarioFilter(string Limit, string Offset, string Articulo,string Fecha_upload)
         {
-            var result = await ialmacenRepository.ListarArticuloInventarioFilter(Limit, Offset, Articulo);
+            var result = await ialmacenRepository.ListarArticuloInventarioFilter(Limit, Offset, Articulo, Fecha_upload);
 
             return Ok(result);
         }
 
-        [HttpGet("DetalleInventarioGeneral/{Articulo}")]
-        public async Task<IActionResult> DetalleInventarioGeneral(string Articulo)
+        [HttpGet("DetalleInventarioGeneral/{Articulo}/{Fecha_upload}")]
+        public async Task<IActionResult> DetalleInventarioGeneral(string Articulo,string Fecha_upload)
         {
-            var result = await ialmacenRepository.DetalleInventarioGeneral(Articulo);
+            var result = await ialmacenRepository.DetalleInventarioGeneral(Articulo, Fecha_upload);
 
             return Ok(result);
         }
@@ -160,26 +160,26 @@ namespace ApiAlmacen.Controllers.Almacen
             return Ok(result);
         }
 
-        [HttpGet("ListarDetalleLoteImportacion/{Limit}/{Offset}/{Articulo}")]
-        public async Task<IActionResult> ListarDetalleLoteImportacion(string Limit, string Offset, string Articulo)
+        [HttpGet("ListarDetalleLoteImportacion/{Limit}/{Offset}/{Articulo}/{Fecha_upload}")]
+        public async Task<IActionResult> ListarDetalleLoteImportacion(string Limit, string Offset, string Articulo, string Fecha_upload)
         {
-            var result = await ialmacenRepository.ListarDetalleLoteImportacion(Limit, Offset, Articulo);
+            var result = await ialmacenRepository.ListarDetalleLoteImportacion(Limit, Offset, Articulo, Fecha_upload);
 
             return Ok(result);
         }
 
-        [HttpGet("ListarDetalleLoteImportacionAll/{Articulo}")]
-        public async Task<IActionResult> ListarDetalleLoteImportacionAll(string Articulo)
+        [HttpGet("ListarDetalleLoteImportacionAll/{Articulo}/{Fecha_upload}")]
+        public async Task<IActionResult> ListarDetalleLoteImportacionAll(string Articulo, string Fecha_upload)
         {
-            var result = await ialmacenRepository.ListarDetalleLoteImportacionAll(Articulo);
+            var result = await ialmacenRepository.ListarDetalleLoteImportacionAll(Articulo, Fecha_upload);
 
             return Ok(result);
         }
 
-        [HttpGet("TotalDetalleLote/{Articulo}/{Tc}/{Desc}/{Igv}")]
-        public async Task<IActionResult> TotalDetalleLote(string Articulo, string Tc, string Desc, float Igv)
+        [HttpGet("TotalDetalleLote/{Articulo}/{Tc}/{Desc}/{Igv}/{Fecha_upload}")]
+        public async Task<IActionResult> TotalDetalleLote(string Articulo, string Tc, string Desc, float Igv, string Fecha_upload)
         {
-            var result = await ialmacenRepository.TotalDetalleLote(Articulo, Tc, Desc, Igv);
+            var result = await ialmacenRepository.TotalDetalleLote(Articulo, Tc, Desc, Igv, Fecha_upload);
 
             return Ok(result);
         }
@@ -202,7 +202,7 @@ namespace ApiAlmacen.Controllers.Almacen
                 return BadRequest("error 404, Datos Incompletos");
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            var created = await ialmacenRepository.FilterCodigoInterno(trAlmacen.Limit!, trAlmacen.Offset!, trAlmacen.CodiInte!);
+            var created = await ialmacenRepository.FilterCodigoInterno(trAlmacen.Limit!, trAlmacen.Offset!, trAlmacen.CodiInte!, trAlmacen.Fecha_upload!);
 
             return Created("create", created);
         }
@@ -214,22 +214,22 @@ namespace ApiAlmacen.Controllers.Almacen
                 return BadRequest("error 404, Datos Incompletos");
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            var created = await ialmacenRepository.FilterCodigoEqui(trAlmacen.Limit!, trAlmacen.Offset!, trAlmacen.CodigoEqui!);
+            var created = await ialmacenRepository.FilterCodigoEqui(trAlmacen.Limit!, trAlmacen.Offset!, trAlmacen.CodigoEqui!, trAlmacen.Fecha_upload!);
 
             return Created("create", created);
         }
-        [HttpGet("FilterCodigoEquiFamilia/{Limit}/{Offset}/{Familia}")]
-        public async Task<IActionResult> FilterCodigoEquiFamilia(string Limit, string Offset, string Familia)
+        [HttpGet("FilterCodigoEquiFamilia/{Limit}/{Offset}/{Familia}/{Fecha_upload}")]
+        public async Task<IActionResult> FilterCodigoEquiFamilia(string Limit, string Offset, string Familia,string Fecha_upload)
         {
-            var result = await ialmacenRepository.FilterCodigoEquiFamilia(Limit, Offset, Familia);
+            var result = await ialmacenRepository.FilterCodigoEquiFamilia(Limit, Offset, Familia, Fecha_upload);
 
             return Ok(result);
         }
 
-        [HttpGet("FilterCodigoEquiSubFamilia/{Limit}/{Offset}/{Familia}/{SubFamilia}")]
-        public async Task<IActionResult> FilterCodigoEquiSubFamilia(string Limit, string Offset, string Familia, string SubFamilia)
+        [HttpGet("FilterCodigoEquiSubFamilia/{Limit}/{Offset}/{Familia}/{SubFamilia}/{Fecha_upload}")]
+        public async Task<IActionResult> FilterCodigoEquiSubFamilia(string Limit, string Offset, string Familia, string SubFamilia,string Fecha_upload)
         {
-            var result = await ialmacenRepository.FilterCodigoEquiSubFamilia(Limit, Offset, Familia, SubFamilia);
+            var result = await ialmacenRepository.FilterCodigoEquiSubFamilia(Limit, Offset, Familia, SubFamilia, Fecha_upload);
 
             return Ok(result);
         }
@@ -241,21 +241,21 @@ namespace ApiAlmacen.Controllers.Almacen
                 return BadRequest("error 404, Datos Incompletos");
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            var created = await ialmacenRepository.FilterDescripcion(trAlmacen.Limit!, trAlmacen.Offset!, trAlmacen.Descrip!);
+            var created = await ialmacenRepository.FilterDescripcion(trAlmacen.Limit!, trAlmacen.Offset!, trAlmacen.Descrip!, trAlmacen.Fecha_upload!);
 
             return Created("create", created);
         }
-        [HttpGet("FilterDescripcionFamilia/{Limit}/{Offset}/{Familia}")]
-        public async Task<IActionResult> FilterDescripcionFamilia(string Limit, string Offset, string Familia)
+        [HttpGet("FilterDescripcionFamilia/{Limit}/{Offset}/{Familia}/{Fecha_upload}")]
+        public async Task<IActionResult> FilterDescripcionFamilia(string Limit, string Offset, string Familia, string Fecha_upload)
         {
-            var result = await ialmacenRepository.FilterDescripcionFamilia(Limit, Offset, Familia);
+            var result = await ialmacenRepository.FilterDescripcionFamilia(Limit, Offset, Familia, Fecha_upload);
 
             return Ok(result);
         }
-        [HttpGet("FilterDescripcionSubFamilia/{Limit}/{Offset}/{Familia}/{SubFamilia}")]
-        public async Task<IActionResult> FilterDescripcionSubFamilia(string Limit, string Offset, string Familia, string SubFamilia)
+        [HttpGet("FilterDescripcionSubFamilia/{Limit}/{Offset}/{Familia}/{SubFamilia}/{Fecha_upload}")]
+        public async Task<IActionResult> FilterDescripcionSubFamilia(string Limit, string Offset, string Familia, string SubFamilia, string Fecha_upload)
         {
-            var result = await ialmacenRepository.FilterDescripcionSubFamilia(Limit, Offset, Familia, SubFamilia);
+            var result = await ialmacenRepository.FilterDescripcionSubFamilia(Limit, Offset, Familia, SubFamilia, Fecha_upload);
 
             return Ok(result);
         }
@@ -267,35 +267,35 @@ namespace ApiAlmacen.Controllers.Almacen
                 return BadRequest("error 404, Datos Incompletos");
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            var created = await ialmacenRepository.FilterProveedorfilter(trAlmacen.Limit!, trAlmacen.Offset!, trAlmacen.ProveDescrip!);
+            var created = await ialmacenRepository.FilterProveedorfilter(trAlmacen.Limit!, trAlmacen.Offset!, trAlmacen.ProveDescrip!, trAlmacen.Fecha_upload!);
 
             return Created("create", created);
         }
-        [HttpGet("FilterProveedor/{Limit}/{Offset}")]
-        public async Task<IActionResult> FilterProveedor(string Limit, string Offset)
+        [HttpGet("FilterProveedor/{Limit}/{Offset}/{Fecha_upload}")]
+        public async Task<IActionResult> FilterProveedor(string Limit, string Offset, string Fecha_upload)
         {
-            var result = await ialmacenRepository.FilterProveedor(Limit, Offset);
+            var result = await ialmacenRepository.FilterProveedor(Limit, Offset, Fecha_upload);
 
             return Ok(result);
         }
-        [HttpGet("ListadorProveedorAll")]
-        public async Task<IActionResult> ListadorProveedorAll()
+        [HttpGet("ListadorProveedorAll/{Fecha_upload}")]
+        public async Task<IActionResult> ListadorProveedorAll(string Fecha_upload)
         {
-            var result = await ialmacenRepository.ListadorProveedorAll();
+            var result = await ialmacenRepository.ListadorProveedorAll(Fecha_upload);
 
             return Ok(result);
         }
-        [HttpGet("FilterProveedorFamilia/{Limit}/{Offset}/{Familia}")]
-        public async Task<IActionResult> FilterProveedorFamilia(string Limit, string Offset, string Familia)
+        [HttpGet("FilterProveedorFamilia/{Limit}/{Offset}/{Familia}/{Fecha_upload}")]
+        public async Task<IActionResult> FilterProveedorFamilia(string Limit, string Offset, string Familia, string Fecha_upload)
         {
-            var result = await ialmacenRepository.FilterProveedorFamilia(Limit, Offset, Familia);
+            var result = await ialmacenRepository.FilterProveedorFamilia(Limit, Offset, Familia, Fecha_upload);
 
             return Ok(result);
         }
-        [HttpGet("FilterProveedorSubFamilia/{Limit}/{Offset}/{Familia}/{SubFamilia}")]
-        public async Task<IActionResult> FilterProveedorSubFamilia(string Limit, string Offset, string Familia, string SubFamilia)
+        [HttpGet("FilterProveedorSubFamilia/{Limit}/{Offset}/{Familia}/{SubFamilia}/{Fecha_upload}")]
+        public async Task<IActionResult> FilterProveedorSubFamilia(string Limit, string Offset, string Familia, string SubFamilia, string Fecha_upload)
         {
-            var result = await ialmacenRepository.FilterProveedorSubFamilia(Limit, Offset, Familia, SubFamilia);
+            var result = await ialmacenRepository.FilterProveedorSubFamilia(Limit, Offset, Familia, SubFamilia, Fecha_upload);
 
             return Ok(result);
         }

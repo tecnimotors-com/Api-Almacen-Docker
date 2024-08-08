@@ -6,9 +6,10 @@ using Npgsql;
 
 namespace ApiAlmacen.Repository.ReporteRepository.Repo
 {
-    public class ReporteRepositories(PostgreSQLConfiguration connectionString) : IReporteRepository
+    public class ReporteRepositories(PostgreSQLConfiguration connectionString, IConfiguration configuration) : IReporteRepository
     {
         private readonly PostgreSQLConfiguration _connectionString = connectionString;
+        private readonly IConfiguration configuration = configuration;
         protected NpgsqlConnection DbConection()
         {
             return new NpgsqlConnection(_connectionString.ConnectionString);
@@ -18,7 +19,7 @@ namespace ApiAlmacen.Repository.ReporteRepository.Repo
         {
             var db = DbConection();
             var sql = @"
-                        INSERT INTO public.reportepedido(
+                        INSERT INTO public."+ configuration.GetValue<string>("BdProduccion:reporte_pedido")!+ @"(
 	                    codigo, codigoequivalente, descripcion, ajustesfecha, promes2024, promes2023, 
                         stockpedido, stockviaje, stockalma, mesesrese, pedidorecom, ordenpedido)
 	                    VALUES ( @Codigo, @Codigoequivalente, @Descripcion, @Ajustesfecha, @Promes2024, @Promes2023, 
@@ -50,7 +51,7 @@ namespace ApiAlmacen.Repository.ReporteRepository.Repo
                         SELECT idpedido, codigo, codigoequivalente, descripcion,
                         ajustesfecha, promes2024, promes2023, stockpedido, 
                         stockviaje, stockalma, mesesrese, pedidorecom, ordenpedido
-                        FROM public.reportepedido order by codigo asc;
+                        FROM public."+ configuration.GetValue<string>("BdProduccion:reporte_pedido")!+ @" order by codigo asc;
                        ";
             return await db.QueryAsync<Tlreporte>(sql, new { });
         }
@@ -62,7 +63,7 @@ namespace ApiAlmacen.Repository.ReporteRepository.Repo
 			            SELECT idpedido, codigo, codigoequivalente, descripcion,
                         ajustesfecha, promes2024, promes2023, stockpedido, 
                         stockviaje, stockalma, mesesrese, pedidorecom, ordenpedido
-                        FROM public.reportepedido where codigo = '" + Articulo + @"'
+                        FROM public."+ configuration.GetValue<string>("BdProduccion:reporte_pedido")!+ @" where codigo = '" + Articulo + @"'
                        ";
 
             var result = await db.QueryFirstOrDefaultAsync<Tlreporte>(sql, new { });
@@ -73,7 +74,7 @@ namespace ApiAlmacen.Repository.ReporteRepository.Repo
             var db = DbConection();
 
             var sql = @"
-                        UPDATE public.reportepedido
+                        UPDATE public."+ configuration.GetValue<string>("BdProduccion:reporte_pedido")!+ @"
 	                    SET 
 	                    codigo=@Codigo,
 	                    codigoequivalente=@Codigoequivalente, 
@@ -109,7 +110,7 @@ namespace ApiAlmacen.Repository.ReporteRepository.Repo
             return result > 0;
         }
         /*  
-    UPDATE public.reportepedido
+    UPDATE public."+ configuration.GetValue<string>("BdProduccion:reporte_pedido")!+ @"
 	SET 
 	idpedido=?,
 	codigo=?,

@@ -7,8 +7,40 @@
       "RelativeMoniker": "D:0:0:{586E2916-892E-45BC-B9DE-7BCCCD3B9C28}|ApiAlmacen\\ApiAlmacen.csproj|solutionrelative:apialmacen\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{586E2916-892E-45BC-B9DE-7BCCCD3B9C28}|ApiAlmacen\\ApiAlmacen.csproj|d:\\tecnimotors\\1. produccion\\1. almacen\\docker\\api-almacen-docker\\apialmacen\\apialmacen\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{586E2916-892E-45BC-B9DE-7BCCCD3B9C28}|ApiAlmacen\\ApiAlmacen.csproj|solutionrelative:apialmacen\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{586E2916-892E-45BC-B9DE-7BCCCD3B9C28}|ApiAlmacen\\ApiAlmacen.csproj|d:\\tecnimotors\\1. produccion\\1. almacen\\docker\\api-almacen-docker\\apialmacen\\apialmacen\\controllers\\proveedor\\proveedorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{586E2916-892E-45BC-B9DE-7BCCCD3B9C28}|ApiAlmacen\\ApiAlmacen.csproj|solutionrelative:apialmacen\\controllers\\proveedor\\proveedorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{586E2916-892E-45BC-B9DE-7BCCCD3B9C28}|ApiAlmacen\\ApiAlmacen.csproj|d:\\tecnimotors\\1. produccion\\1. almacen\\docker\\api-almacen-docker\\apialmacen\\apialmacen\\controllers\\almacen\\almacencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{586E2916-892E-45BC-B9DE-7BCCCD3B9C28}|ApiAlmacen\\ApiAlmacen.csproj|solutionrelative:apialmacen\\controllers\\almacen\\almacencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{586E2916-892E-45BC-B9DE-7BCCCD3B9C28}|ApiAlmacen\\ApiAlmacen.csproj|d:\\tecnimotors\\1. produccion\\1. almacen\\docker\\api-almacen-docker\\apialmacen\\apialmacen\\controllers\\adicionales\\adicionalescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{586E2916-892E-45BC-B9DE-7BCCCD3B9C28}|ApiAlmacen\\ApiAlmacen.csproj|solutionrelative:apialmacen\\controllers\\adicionales\\adicionalescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{586E2916-892E-45BC-B9DE-7BCCCD3B9C28}|ApiAlmacen\\ApiAlmacen.csproj|d:\\tecnimotors\\1. produccion\\1. almacen\\docker\\api-almacen-docker\\apialmacen\\apialmacen\\repository\\reporterepository\\repo\\reporterepositories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{586E2916-892E-45BC-B9DE-7BCCCD3B9C28}|ApiAlmacen\\ApiAlmacen.csproj|solutionrelative:apialmacen\\repository\\reporterepository\\repo\\reporterepositories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{586E2916-892E-45BC-B9DE-7BCCCD3B9C28}|ApiAlmacen\\ApiAlmacen.csproj|d:\\tecnimotors\\1. produccion\\1. almacen\\docker\\api-almacen-docker\\apialmacen\\apialmacen\\repository\\proveedorrepository\\repo\\proveedorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{586E2916-892E-45BC-B9DE-7BCCCD3B9C28}|ApiAlmacen\\ApiAlmacen.csproj|solutionrelative:apialmacen\\repository\\proveedorrepository\\repo\\proveedorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{586E2916-892E-45BC-B9DE-7BCCCD3B9C28}|ApiAlmacen\\ApiAlmacen.csproj|d:\\tecnimotors\\1. produccion\\1. almacen\\docker\\api-almacen-docker\\apialmacen\\apialmacen\\repository\\almacenrepository\\repo\\almacenrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{586E2916-892E-45BC-B9DE-7BCCCD3B9C28}|ApiAlmacen\\ApiAlmacen.csproj|solutionrelative:apialmacen\\repository\\almacenrepository\\repo\\almacenrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{586E2916-892E-45BC-B9DE-7BCCCD3B9C28}|ApiAlmacen\\ApiAlmacen.csproj|d:\\tecnimotors\\1. produccion\\1. almacen\\docker\\api-almacen-docker\\apialmacen\\apialmacen\\repository\\acumuladorepository\\repo\\acumuladorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{586E2916-892E-45BC-B9DE-7BCCCD3B9C28}|ApiAlmacen\\ApiAlmacen.csproj|solutionrelative:apialmacen\\repository\\acumuladorepository\\repo\\acumuladorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{586E2916-892E-45BC-B9DE-7BCCCD3B9C28}|ApiAlmacen\\ApiAlmacen.csproj|d:\\tecnimotors\\1. produccion\\1. almacen\\docker\\api-almacen-docker\\apialmacen\\apialmacen\\repository\\alertarepository\\repo\\alertarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{586E2916-892E-45BC-B9DE-7BCCCD3B9C28}|ApiAlmacen\\ApiAlmacen.csproj|solutionrelative:apialmacen\\repository\\alertarepository\\repo\\alertarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{586E2916-892E-45BC-B9DE-7BCCCD3B9C28}|ApiAlmacen\\ApiAlmacen.csproj|d:\\tecnimotors\\1. produccion\\1. almacen\\docker\\api-almacen-docker\\apialmacen\\apialmacen\\repository\\adicionalesrepository\\repo\\adicionalesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{586E2916-892E-45BC-B9DE-7BCCCD3B9C28}|ApiAlmacen\\ApiAlmacen.csproj|solutionrelative:apialmacen\\repository\\adicionalesrepository\\repo\\adicionalesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -27,14 +59,118 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\TECNIMOTORS\\1. Produccion\\1. Almacen\\docker\\Api-Almacen-Docker\\ApiAlmacen\\ApiAlmacen\\Program.cs",
-              "RelativeDocumentMoniker": "ApiAlmacen\\Program.cs",
-              "ToolTip": "D:\\TECNIMOTORS\\1. Produccion\\1. Almacen\\docker\\Api-Almacen-Docker\\ApiAlmacen\\ApiAlmacen\\Program.cs",
-              "RelativeToolTip": "ApiAlmacen\\Program.cs",
-              "ViewState": "AQIAADwAAAAAAAAAAAAAABkAAAAAAAAA",
+              "Title": "ProveedorController.cs",
+              "DocumentMoniker": "D:\\TECNIMOTORS\\1. Produccion\\1. Almacen\\docker\\Api-Almacen-Docker\\ApiAlmacen\\ApiAlmacen\\Controllers\\Proveedor\\ProveedorController.cs",
+              "RelativeDocumentMoniker": "ApiAlmacen\\Controllers\\Proveedor\\ProveedorController.cs",
+              "ToolTip": "D:\\TECNIMOTORS\\1. Produccion\\1. Almacen\\docker\\Api-Almacen-Docker\\ApiAlmacen\\ApiAlmacen\\Controllers\\Proveedor\\ProveedorController.cs",
+              "RelativeToolTip": "ApiAlmacen\\Controllers\\Proveedor\\ProveedorController.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAmwB4AAACLAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-07T15:58:06.213Z",
+              "WhenOpened": "2024-08-08T17:45:18.75Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AdicionalesController.cs",
+              "DocumentMoniker": "D:\\TECNIMOTORS\\1. Produccion\\1. Almacen\\docker\\Api-Almacen-Docker\\ApiAlmacen\\ApiAlmacen\\Controllers\\Adicionales\\AdicionalesController.cs",
+              "RelativeDocumentMoniker": "ApiAlmacen\\Controllers\\Adicionales\\AdicionalesController.cs",
+              "ToolTip": "D:\\TECNIMOTORS\\1. Produccion\\1. Almacen\\docker\\Api-Almacen-Docker\\ApiAlmacen\\ApiAlmacen\\Controllers\\Adicionales\\AdicionalesController.cs",
+              "RelativeToolTip": "ApiAlmacen\\Controllers\\Adicionales\\AdicionalesController.cs",
+              "ViewState": "AQIAAG0BAAAAAAAAAAAYwAADAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-08T17:45:03.15Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AlmacenController.cs",
+              "DocumentMoniker": "D:\\TECNIMOTORS\\1. Produccion\\1. Almacen\\docker\\Api-Almacen-Docker\\ApiAlmacen\\ApiAlmacen\\Controllers\\Almacen\\AlmacenController.cs",
+              "RelativeDocumentMoniker": "ApiAlmacen\\Controllers\\Almacen\\AlmacenController.cs",
+              "ToolTip": "D:\\TECNIMOTORS\\1. Produccion\\1. Almacen\\docker\\Api-Almacen-Docker\\ApiAlmacen\\ApiAlmacen\\Controllers\\Almacen\\AlmacenController.cs",
+              "RelativeToolTip": "ApiAlmacen\\Controllers\\Almacen\\AlmacenController.cs",
+              "ViewState": "AQIAAJUAAAAAAAAAAAAYwKoAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-08T16:57:12.04Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ReporteRepositories.cs",
+              "DocumentMoniker": "D:\\TECNIMOTORS\\1. Produccion\\1. Almacen\\docker\\Api-Almacen-Docker\\ApiAlmacen\\ApiAlmacen\\Repository\\ReporteRepository\\Repo\\ReporteRepositories.cs",
+              "RelativeDocumentMoniker": "ApiAlmacen\\Repository\\ReporteRepository\\Repo\\ReporteRepositories.cs",
+              "ToolTip": "D:\\TECNIMOTORS\\1. Produccion\\1. Almacen\\docker\\Api-Almacen-Docker\\ApiAlmacen\\ApiAlmacen\\Repository\\ReporteRepository\\Repo\\ReporteRepositories.cs",
+              "RelativeToolTip": "ApiAlmacen\\Repository\\ReporteRepository\\Repo\\ReporteRepositories.cs",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAiwDEAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-08T17:02:49.446Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProveedorRepository.cs",
+              "DocumentMoniker": "D:\\TECNIMOTORS\\1. Produccion\\1. Almacen\\docker\\Api-Almacen-Docker\\ApiAlmacen\\ApiAlmacen\\Repository\\ProveedorRepository\\Repo\\ProveedorRepository.cs",
+              "RelativeDocumentMoniker": "ApiAlmacen\\Repository\\ProveedorRepository\\Repo\\ProveedorRepository.cs",
+              "ToolTip": "D:\\TECNIMOTORS\\1. Produccion\\1. Almacen\\docker\\Api-Almacen-Docker\\ApiAlmacen\\ApiAlmacen\\Repository\\ProveedorRepository\\Repo\\ProveedorRepository.cs",
+              "RelativeToolTip": "ApiAlmacen\\Repository\\ProveedorRepository\\Repo\\ProveedorRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-08T16:49:24.434Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AlmacenRepository.cs",
+              "DocumentMoniker": "D:\\TECNIMOTORS\\1. Produccion\\1. Almacen\\docker\\Api-Almacen-Docker\\ApiAlmacen\\ApiAlmacen\\Repository\\AlmacenRepository\\Repo\\AlmacenRepository.cs",
+              "RelativeDocumentMoniker": "ApiAlmacen\\Repository\\AlmacenRepository\\Repo\\AlmacenRepository.cs",
+              "ToolTip": "D:\\TECNIMOTORS\\1. Produccion\\1. Almacen\\docker\\Api-Almacen-Docker\\ApiAlmacen\\ApiAlmacen\\Repository\\AlmacenRepository\\Repo\\AlmacenRepository.cs",
+              "RelativeToolTip": "ApiAlmacen\\Repository\\AlmacenRepository\\Repo\\AlmacenRepository.cs",
+              "ViewState": "AQIAAHABAAAAAAAAAAD4v4MBAABiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-08T16:48:05.773Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AcumuladoRepository.cs",
+              "DocumentMoniker": "D:\\TECNIMOTORS\\1. Produccion\\1. Almacen\\docker\\Api-Almacen-Docker\\ApiAlmacen\\ApiAlmacen\\Repository\\AcumuladoRepository\\Repo\\AcumuladoRepository.cs",
+              "RelativeDocumentMoniker": "ApiAlmacen\\Repository\\AcumuladoRepository\\Repo\\AcumuladoRepository.cs",
+              "ToolTip": "D:\\TECNIMOTORS\\1. Produccion\\1. Almacen\\docker\\Api-Almacen-Docker\\ApiAlmacen\\ApiAlmacen\\Repository\\AcumuladoRepository\\Repo\\AcumuladoRepository.cs",
+              "RelativeToolTip": "ApiAlmacen\\Repository\\AcumuladoRepository\\Repo\\AcumuladoRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-08T16:09:41.596Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AlertaRepository.cs",
+              "DocumentMoniker": "D:\\TECNIMOTORS\\1. Produccion\\1. Almacen\\docker\\Api-Almacen-Docker\\ApiAlmacen\\ApiAlmacen\\Repository\\AlertaRepository\\Repo\\AlertaRepository.cs",
+              "RelativeDocumentMoniker": "ApiAlmacen\\Repository\\AlertaRepository\\Repo\\AlertaRepository.cs",
+              "ToolTip": "D:\\TECNIMOTORS\\1. Produccion\\1. Almacen\\docker\\Api-Almacen-Docker\\ApiAlmacen\\ApiAlmacen\\Repository\\AlertaRepository\\Repo\\AlertaRepository.cs",
+              "RelativeToolTip": "ApiAlmacen\\Repository\\AlertaRepository\\Repo\\AlertaRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-08T16:05:07.446Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AdicionalesRepository.cs",
+              "DocumentMoniker": "D:\\TECNIMOTORS\\1. Produccion\\1. Almacen\\docker\\Api-Almacen-Docker\\ApiAlmacen\\ApiAlmacen\\Repository\\AdicionalesRepository\\Repo\\AdicionalesRepository.cs",
+              "RelativeDocumentMoniker": "ApiAlmacen\\Repository\\AdicionalesRepository\\Repo\\AdicionalesRepository.cs",
+              "ToolTip": "D:\\TECNIMOTORS\\1. Produccion\\1. Almacen\\docker\\Api-Almacen-Docker\\ApiAlmacen\\ApiAlmacen\\Repository\\AdicionalesRepository\\Repo\\AdicionalesRepository.cs",
+              "RelativeToolTip": "ApiAlmacen\\Repository\\AdicionalesRepository\\Repo\\AdicionalesRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAACIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-08T15:47:25.74Z",
               "EditorCaption": ""
             },
             {
@@ -45,9 +181,9 @@
               "RelativeDocumentMoniker": "ApiAlmacen\\appsettings.json",
               "ToolTip": "D:\\TECNIMOTORS\\1. Produccion\\1. Almacen\\docker\\Api-Almacen-Docker\\ApiAlmacen\\ApiAlmacen\\appsettings.json",
               "RelativeToolTip": "ApiAlmacen\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAWAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-08-05T15:13:03.081Z",
+              "WhenOpened": "2024-08-08T15:46:54.229Z",
               "EditorCaption": ""
             }
           ]
