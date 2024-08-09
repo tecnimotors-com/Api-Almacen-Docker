@@ -1,6 +1,7 @@
 ﻿
 
 using ApiAlmacen.Repository.AlmacenRepository.Models;
+using ApiAlmacen.Repository.AlmacenRepository.Models.FechaUpload;
 
 namespace ApiAlmacen.Repository.AlmacenRepository.Interface
 {
@@ -65,5 +66,8 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Interface
         public Task<IEnumerable<TlCodiEqui>> FilterCodigoEquiSubFamilia(string Limit, string Offset, string Familia, string SubFamilia, string Fecha_upload);
         /*--------------------------------------------------------------------*/
         public Task<TdImportacion> DetalleImportacion(string Articulo);
+
+        public Task<IEnumerable<Tlfechaupload>> ListadoFechaUpload();
+
     }
 }

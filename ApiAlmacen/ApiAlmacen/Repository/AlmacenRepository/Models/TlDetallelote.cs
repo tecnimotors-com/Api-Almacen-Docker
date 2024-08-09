@@ -31,5 +31,6 @@
         public string? Venta_2013 { get; set; }
         public string? Flete { get; set; }
         public string? Mon { get; set; }
+        public string? Fecha_upload { get; set; }
     }
 }

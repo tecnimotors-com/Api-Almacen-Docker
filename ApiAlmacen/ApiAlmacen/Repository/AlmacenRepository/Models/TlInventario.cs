@@ -56,11 +56,13 @@
         public string? Indice_rotacion { get; set; }
         public string? Prom_ventas_ult_mes { get; set; }
         public string? Nro_meses_stock { get; set; }
-        public string? proveedor_nombre { get; set; }
-        public string? proveedor_codigo { get; set; }
-        public string? familia_codigo { get; set; }
-        public string? familia_descripcion { get; set; }
-        public string? sub_familia_codigo { get; set; }
-        public string? sub_familia_descripcion { get; set; }
+        public string? Proveedor_nombre { get; set; }
+        public string? Proveedor_codigo { get; set; }
+        public string? Familia_codigo { get; set; }
+        public string? Familia_descripcion { get; set; }
+        public string? Sub_familia_codigo { get; set; }
+        public string? Sub_familia_descripcion { get; set; }
+        public string? Ventas_2015 { get; set; }
+        public string? Fecha_upload { get; set; }
     }
 }

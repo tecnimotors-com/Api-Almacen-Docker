@@ -49,9 +49,11 @@ namespace ApiAlmacen.Controllers.Almacen
         }
 
         [HttpGet("ListarAnalisisCostosInventario/{Limit}/{Offset}/{Fecha_upload}")]
-        public async Task<IActionResult> ListarAnalisisCostosInventario(string Limit, string Offset,string Fecha_upload)
+        public async Task<IActionResult> ListarAnalisisCostosInventario(string Limit, string Offset, string Fecha_upload)
         {
-            var result = await ialmacenRepository.ListarAnalisisCostosInventario(Limit, Offset, Fecha_upload);
+            var result1 = Fecha_upload.Replace("%2F", "/");
+            var result2 = result1.Replace("%2F", "/");
+            var result = await ialmacenRepository.ListarAnalisisCostosInventario(Limit, Offset, result2);
 
             return Ok(result);
         }
@@ -59,15 +61,19 @@ namespace ApiAlmacen.Controllers.Almacen
         [HttpGet("ListarFamiliaCodigo/{Fecha_upload}")]
         public async Task<IActionResult> ListarFamiliaCodigo(string Fecha_upload)
         {
-            var result = await ialmacenRepository.ListarFamiliaCodigo(Fecha_upload);
+            var result1 = Fecha_upload.Replace("%2F", "/");
+            var result2 = result1.Replace("%2F", "/");
+            var result = await ialmacenRepository.ListarFamiliaCodigo(result2);
 
             return Ok(result);
         }
 
         [HttpGet("ListarSubFamiliaCodigo/{Fecha_upload}")]
-        public async Task<IActionResult> ListarSubFamiliaCodigo(string Familia,string Fecha_upload)
+        public async Task<IActionResult> ListarSubFamiliaCodigo(string Familia, string Fecha_upload)
         {
-            var result = await ialmacenRepository.ListarSubFamiliaCodigo(Familia, Fecha_upload);
+            var result1 = Fecha_upload.Replace("%2F", "/");
+            var result2 = result1.Replace("%2F", "/");
+            var result = await ialmacenRepository.ListarSubFamiliaCodigo(Familia, result2);
 
             return Ok(result);
         }
@@ -76,43 +82,55 @@ namespace ApiAlmacen.Controllers.Almacen
         [HttpGet("ListarArticuloInventarioOnly/{Fecha_upload}")]
         public async Task<IActionResult> ListarArticuloInventarioOnly(string Fecha_upload)
         {
-            var result = await ialmacenRepository.ListarArticuloInventarioOnly(Fecha_upload);
+            var result1 = Fecha_upload.Replace("%2F", "/");
+            var result2 = result1.Replace("%2F", "/");
+            var result = await ialmacenRepository.ListarArticuloInventarioOnly(result2);
 
             return Ok(result);
         }
         [HttpGet("ListarEquivalentoInventarioOnly/{Fecha_upload}")]
         public async Task<IActionResult> ListarEquivalentoInventarioOnly(string Fecha_upload)
-        { 
-            var result = await ialmacenRepository.ListarEquivalentoInventarioOnly(Fecha_upload);
+        {
+            var result1 = Fecha_upload.Replace("%2F", "/");
+            var result2 = result1.Replace("%2F", "/");
+            var result = await ialmacenRepository.ListarEquivalentoInventarioOnly(result2);
 
             return Ok(result);
         }
         [HttpGet("ListarDescripcionInventariOnly/{Fecha_upload}")]
         public async Task<IActionResult> ListarDescripcionInventariOnly(string Fecha_upload)
         {
-            var result = await ialmacenRepository.ListarDescripcionInventariOnly(Fecha_upload);
+            var result1 = Fecha_upload.Replace("%2F", "/");
+            var result2 = result1.Replace("%2F", "/");
+            var result = await ialmacenRepository.ListarDescripcionInventariOnly(result2);
 
             return Ok(result);
         }
         /*------------------------------------------------------------------------------*/
         [HttpGet("ListarArticuloInventario/{Limit}/{Offset}/{Fecha_upload}")]
-        public async Task<IActionResult> ListarArticuloInventario(string Limit, string Offset,string Fecha_upload)
+        public async Task<IActionResult> ListarArticuloInventario(string Limit, string Offset, string Fecha_upload)
         {
-            var result = await ialmacenRepository.ListarArticuloInventario(Limit, Offset, Fecha_upload);
+            var result1 = Fecha_upload.Replace("%2F", "/");
+            var result2 = result1.Replace("%2F", "/");
+            var result = await ialmacenRepository.ListarArticuloInventario(Limit, Offset, result2);
 
             return Ok(result);
         }
         [HttpGet("ListarEquivalentoInventario/{Limit}/{Offset}/{Fecha_upload}")]
         public async Task<IActionResult> ListarEquivalentoInventario(string Limit, string Offset, string Fecha_upload)
         {
-            var result = await ialmacenRepository.ListarEquivalentoInventario(Limit, Offset, Fecha_upload);
+            var result1 = Fecha_upload.Replace("%2F", "/");
+            var result2 = result1.Replace("%2F", "/");
+            var result = await ialmacenRepository.ListarEquivalentoInventario(Limit, Offset, result2);
 
             return Ok(result);
         }
         [HttpGet("ListarDescripcionInventario/{Limit}/{Offset}/{Fecha_upload}")]
-        public async Task<IActionResult> ListarDescripcionInventario(string Limit, string Offset,string Fecha_upload)
+        public async Task<IActionResult> ListarDescripcionInventario(string Limit, string Offset, string Fecha_upload)
         {
-            var result = await ialmacenRepository.ListarDescripcionInventario(Limit, Offset, Fecha_upload);
+            var result1 = Fecha_upload.Replace("%2F", "/");
+            var result2 = result1.Replace("%2F", "/");
+            var result = await ialmacenRepository.ListarDescripcionInventario(Limit, Offset, result2);
 
             return Ok(result);
         }
@@ -120,34 +138,42 @@ namespace ApiAlmacen.Controllers.Almacen
         /*------------------------------------------------------------------------------*/
         /*------------------------------------------------------------------------------*/
         [HttpGet("ListarArticuloInventarioFamilia/{Limit}/{Offset}/{Familia}/{Fecha_upload}")]
-        public async Task<IActionResult> ListarArticuloInventarioFamilia(string Limit, string Offset, string Familia,string Fecha_upload)
+        public async Task<IActionResult> ListarArticuloInventarioFamilia(string Limit, string Offset, string Familia, string Fecha_upload)
         {
-            var result = await ialmacenRepository.ListarArticuloInventarioFamilia(Limit, Offset, Familia, Fecha_upload);
+            var result1 = Fecha_upload.Replace("%2F", "/");
+            var result2 = result1.Replace("%2F", "/");
+            var result = await ialmacenRepository.ListarArticuloInventarioFamilia(Limit, Offset, Familia, result2);
 
             return Ok(result);
         }
 
         [HttpGet("ListarArticuloSubFamilia/{Limit}/{Offset}/{Familia}/{SubFamilia}/{Fecha_upload}")]
-        public async Task<IActionResult> ListarArticuloSubFamilia(string Limit, string Offset, string Familia, string SubFamilia,string Fecha_upload)
+        public async Task<IActionResult> ListarArticuloSubFamilia(string Limit, string Offset, string Familia, string SubFamilia, string Fecha_upload)
         {
-            var result = await ialmacenRepository.ListarArticuloSubFamilia(Limit, Offset, Familia, SubFamilia, Fecha_upload);
+            var result1 = Fecha_upload.Replace("%2F", "/");
+            var result2 = result1.Replace("%2F", "/");
+            var result = await ialmacenRepository.ListarArticuloSubFamilia(Limit, Offset, Familia, SubFamilia, result2);
 
             return Ok(result);
         }
 
 
         [HttpGet("ListarArticuloInventarioFilter/{Limit}/{Offset}/{Articulo}/{Fecha_upload}")]
-        public async Task<IActionResult> ListarArticuloInventarioFilter(string Limit, string Offset, string Articulo,string Fecha_upload)
+        public async Task<IActionResult> ListarArticuloInventarioFilter(string Limit, string Offset, string Articulo, string Fecha_upload)
         {
-            var result = await ialmacenRepository.ListarArticuloInventarioFilter(Limit, Offset, Articulo, Fecha_upload);
+            var result1 = Fecha_upload.Replace("%2F", "/");
+            var result2 = result1.Replace("%2F", "/");
+            var result = await ialmacenRepository.ListarArticuloInventarioFilter(Limit, Offset, Articulo, result2);
 
             return Ok(result);
         }
 
         [HttpGet("DetalleInventarioGeneral/{Articulo}/{Fecha_upload}")]
-        public async Task<IActionResult> DetalleInventarioGeneral(string Articulo,string Fecha_upload)
+        public async Task<IActionResult> DetalleInventarioGeneral(string Articulo, string Fecha_upload)
         {
-            var result = await ialmacenRepository.DetalleInventarioGeneral(Articulo, Fecha_upload);
+            var result1 = Fecha_upload.Replace("%2F", "/");
+            var result2 = result1.Replace("%2F", "/");
+            var result = await ialmacenRepository.DetalleInventarioGeneral(Articulo, result2);
 
             return Ok(result);
         }
@@ -163,7 +189,9 @@ namespace ApiAlmacen.Controllers.Almacen
         [HttpGet("ListarDetalleLoteImportacion/{Limit}/{Offset}/{Articulo}/{Fecha_upload}")]
         public async Task<IActionResult> ListarDetalleLoteImportacion(string Limit, string Offset, string Articulo, string Fecha_upload)
         {
-            var result = await ialmacenRepository.ListarDetalleLoteImportacion(Limit, Offset, Articulo, Fecha_upload);
+            var result1 = Fecha_upload.Replace("%2F", "/");
+            var result2 = result1.Replace("%2F", "/");
+            var result = await ialmacenRepository.ListarDetalleLoteImportacion(Limit, Offset, Articulo, result2);
 
             return Ok(result);
         }
@@ -171,7 +199,9 @@ namespace ApiAlmacen.Controllers.Almacen
         [HttpGet("ListarDetalleLoteImportacionAll/{Articulo}/{Fecha_upload}")]
         public async Task<IActionResult> ListarDetalleLoteImportacionAll(string Articulo, string Fecha_upload)
         {
-            var result = await ialmacenRepository.ListarDetalleLoteImportacionAll(Articulo, Fecha_upload);
+            var result1 = Fecha_upload.Replace("%2F", "/");
+            var result2 = result1.Replace("%2F", "/");
+            var result = await ialmacenRepository.ListarDetalleLoteImportacionAll(Articulo, result2);
 
             return Ok(result);
         }
@@ -179,7 +209,9 @@ namespace ApiAlmacen.Controllers.Almacen
         [HttpGet("TotalDetalleLote/{Articulo}/{Tc}/{Desc}/{Igv}/{Fecha_upload}")]
         public async Task<IActionResult> TotalDetalleLote(string Articulo, string Tc, string Desc, float Igv, string Fecha_upload)
         {
-            var result = await ialmacenRepository.TotalDetalleLote(Articulo, Tc, Desc, Igv, Fecha_upload);
+            var result1 = Fecha_upload.Replace("%2F", "/");
+            var result2 = result1.Replace("%2F", "/");
+            var result = await ialmacenRepository.TotalDetalleLote(Articulo, Tc, Desc, Igv, result2);
 
             return Ok(result);
         }
@@ -219,17 +251,21 @@ namespace ApiAlmacen.Controllers.Almacen
             return Created("create", created);
         }
         [HttpGet("FilterCodigoEquiFamilia/{Limit}/{Offset}/{Familia}/{Fecha_upload}")]
-        public async Task<IActionResult> FilterCodigoEquiFamilia(string Limit, string Offset, string Familia,string Fecha_upload)
+        public async Task<IActionResult> FilterCodigoEquiFamilia(string Limit, string Offset, string Familia, string Fecha_upload)
         {
-            var result = await ialmacenRepository.FilterCodigoEquiFamilia(Limit, Offset, Familia, Fecha_upload);
+            var result1 = Fecha_upload.Replace("%2F", "/");
+            var result2 = result1.Replace("%2F", "/");
+            var result = await ialmacenRepository.FilterCodigoEquiFamilia(Limit, Offset, Familia, result2);
 
             return Ok(result);
         }
 
         [HttpGet("FilterCodigoEquiSubFamilia/{Limit}/{Offset}/{Familia}/{SubFamilia}/{Fecha_upload}")]
-        public async Task<IActionResult> FilterCodigoEquiSubFamilia(string Limit, string Offset, string Familia, string SubFamilia,string Fecha_upload)
+        public async Task<IActionResult> FilterCodigoEquiSubFamilia(string Limit, string Offset, string Familia, string SubFamilia, string Fecha_upload)
         {
-            var result = await ialmacenRepository.FilterCodigoEquiSubFamilia(Limit, Offset, Familia, SubFamilia, Fecha_upload);
+            var result1 = Fecha_upload.Replace("%2F", "/");
+            var result2 = result1.Replace("%2F", "/");
+            var result = await ialmacenRepository.FilterCodigoEquiSubFamilia(Limit, Offset, Familia, SubFamilia, result2);
 
             return Ok(result);
         }
@@ -248,14 +284,18 @@ namespace ApiAlmacen.Controllers.Almacen
         [HttpGet("FilterDescripcionFamilia/{Limit}/{Offset}/{Familia}/{Fecha_upload}")]
         public async Task<IActionResult> FilterDescripcionFamilia(string Limit, string Offset, string Familia, string Fecha_upload)
         {
-            var result = await ialmacenRepository.FilterDescripcionFamilia(Limit, Offset, Familia, Fecha_upload);
+            var result1 = Fecha_upload.Replace("%2F", "/");
+            var result2 = result1.Replace("%2F", "/");
+            var result = await ialmacenRepository.FilterDescripcionFamilia(Limit, Offset, Familia, result2);
 
             return Ok(result);
         }
         [HttpGet("FilterDescripcionSubFamilia/{Limit}/{Offset}/{Familia}/{SubFamilia}/{Fecha_upload}")]
         public async Task<IActionResult> FilterDescripcionSubFamilia(string Limit, string Offset, string Familia, string SubFamilia, string Fecha_upload)
         {
-            var result = await ialmacenRepository.FilterDescripcionSubFamilia(Limit, Offset, Familia, SubFamilia, Fecha_upload);
+            var result1 = Fecha_upload.Replace("%2F", "/");
+            var result2 = result1.Replace("%2F", "/");
+            var result = await ialmacenRepository.FilterDescripcionSubFamilia(Limit, Offset, Familia, SubFamilia, result2);
 
             return Ok(result);
         }
@@ -274,28 +314,36 @@ namespace ApiAlmacen.Controllers.Almacen
         [HttpGet("FilterProveedor/{Limit}/{Offset}/{Fecha_upload}")]
         public async Task<IActionResult> FilterProveedor(string Limit, string Offset, string Fecha_upload)
         {
-            var result = await ialmacenRepository.FilterProveedor(Limit, Offset, Fecha_upload);
+            var result1 = Fecha_upload.Replace("%2F", "/");
+            var result2 = result1.Replace("%2F", "/");
+            var result = await ialmacenRepository.FilterProveedor(Limit, Offset, result2);
 
             return Ok(result);
         }
         [HttpGet("ListadorProveedorAll/{Fecha_upload}")]
         public async Task<IActionResult> ListadorProveedorAll(string Fecha_upload)
         {
-            var result = await ialmacenRepository.ListadorProveedorAll(Fecha_upload);
+            var result1 = Fecha_upload.Replace("%2F", "/");
+            var result2 = result1.Replace("%2F", "/");
+            var result = await ialmacenRepository.ListadorProveedorAll(result2);
 
             return Ok(result);
         }
         [HttpGet("FilterProveedorFamilia/{Limit}/{Offset}/{Familia}/{Fecha_upload}")]
         public async Task<IActionResult> FilterProveedorFamilia(string Limit, string Offset, string Familia, string Fecha_upload)
         {
-            var result = await ialmacenRepository.FilterProveedorFamilia(Limit, Offset, Familia, Fecha_upload);
+            var result1 = Fecha_upload.Replace("%2F", "/");
+            var result2 = result1.Replace("%2F", "/");
+            var result = await ialmacenRepository.FilterProveedorFamilia(Limit, Offset, Familia, result2);
 
             return Ok(result);
         }
         [HttpGet("FilterProveedorSubFamilia/{Limit}/{Offset}/{Familia}/{SubFamilia}/{Fecha_upload}")]
         public async Task<IActionResult> FilterProveedorSubFamilia(string Limit, string Offset, string Familia, string SubFamilia, string Fecha_upload)
         {
-            var result = await ialmacenRepository.FilterProveedorSubFamilia(Limit, Offset, Familia, SubFamilia, Fecha_upload);
+            var result1 = Fecha_upload.Replace("%2F", "/");
+            var result2 = result1.Replace("%2F", "/");
+            var result = await ialmacenRepository.FilterProveedorSubFamilia(Limit, Offset, Familia, SubFamilia, result2);
 
             return Ok(result);
         }
@@ -305,6 +353,13 @@ namespace ApiAlmacen.Controllers.Almacen
         {
             var result = await ialmacenRepository.DetalleImportacion(Articulo);
 
+            return Ok(result);
+        }
+
+        [HttpGet("ListadoFechaUpload")]
+        public async Task<IActionResult> ListadoFechaUpload()
+        {
+            var result = await ialmacenRepository.ListadoFechaUpload();
             return Ok(result);
         }
     }

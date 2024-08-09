@@ -1,6 +1,7 @@
 ﻿using ApiAlmacen.Context;
 using ApiAlmacen.Repository.AlmacenRepository.Interface;
 using ApiAlmacen.Repository.AlmacenRepository.Models;
+using ApiAlmacen.Repository.AlmacenRepository.Models.FechaUpload;
 using Dapper;
 using Npgsql;
 
@@ -87,8 +88,8 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
             correccion_de_cod_cantidad, valor_vta_soles, valor_vta_dolar, ultimo_costo_prom_soles, ultimo_costo_prom_dolar, 
             margen_unit_soles, margen_unit_dolar, margen_unitario, utilidad_por_ventas, abs_x_participacion, indice_rotacion, 
             prom_ventas_ult_mes, nro_meses_stock, proveedor_nombre, proveedor_codigo, familia_codigo, familia_descripcion, 
-            sub_familia_codigo, sub_familia_descripcion
-            FROM public."+ configuration.GetValue<string>("BdProduccion:analisis_general")!+"  where fecha_upload = '" + Fecha_upload + "' order by codart desc limit '" + Limit + "' offset '" + Offset + "' ;";
+            sub_familia_codigo, sub_familia_descripcion, ventas_2015, fecha_upload
+            FROM public." + configuration.GetValue<string>("BdProduccion:analisis_general")!+"  where fecha_upload = '" + Fecha_upload + "' order by codart desc limit '" + Limit + "' offset '" + Offset + "' ;";
 
             return await db.QueryAsync<TlInventario>(sql, new { });
         }
@@ -139,7 +140,7 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
                         correccion_de_cod_cantidad, valor_vta_soles, valor_vta_dolar, ultimo_costo_prom_soles, ultimo_costo_prom_dolar, 
                         margen_unit_soles, margen_unit_dolar, margen_unitario, utilidad_por_ventas, abs_x_participacion, indice_rotacion, 
                         prom_ventas_ult_mes, nro_meses_stock, proveedor_nombre, proveedor_codigo, familia_codigo, familia_descripcion, 
-                        sub_familia_codigo, sub_familia_descripcion
+                        sub_familia_codigo, sub_familia_descripcion, ventas_2015, fecha_upload
                         FROM public."+ configuration.GetValue<string>("BdProduccion:analisis_general")!+ @" 
                         where familia_codigo = '" + Familia + @"' and sub_familia_codigo = '" + SubFamilia + @"' and fecha_upload = '" + Fecha_upload + @"' 
                         order by codart desc limit '" + Limit + "' offset '" + Offset + "' ;";
@@ -293,7 +294,7 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
                         correccion_de_cod_cantidad, valor_vta_soles, valor_vta_dolar, ultimo_costo_prom_soles, ultimo_costo_prom_dolar, 
                         margen_unit_soles, margen_unit_dolar, margen_unitario, utilidad_por_ventas, abs_x_participacion, indice_rotacion, 
                         prom_ventas_ult_mes, nro_meses_stock, proveedor_nombre, proveedor_codigo, familia_codigo, familia_descripcion, 
-                        sub_familia_codigo, sub_familia_descripcion
+                        sub_familia_codigo, sub_familia_descripcion, ventas_2015, fecha_upload
                         FROM public."+ configuration.GetValue<string>("BdProduccion:analisis_general")!+ @" 
                         where codigo_interno = upper('" + Articulo + @"') and fecha_upload = '" + Fecha_upload + @"' 
                       ;";
@@ -351,8 +352,8 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
                         SELECT codigo, equivalente, descripcion, mhfech, importacion, tc, stock_actual, cantidad,
                         fob, costo_unit, lote, costo_lote, costo_unit_promedio, precio_venta_mn, precio_venta_mn_proy,
                         dolares, actual, proy, campo1, utilidad_promedio, venta_2024, venta_2023, venta_2022,
-                        venta_2021, venta_2020, venta_2019, venta_2013, flete, mon  
-                        FROM public."+ configuration.GetValue<string>("BdProduccion:analisis_lotes")!+ @"   
+                        venta_2021, venta_2020, venta_2019, venta_2013, flete, mon, fecha_upload
+                        FROM public." + configuration.GetValue<string>("BdProduccion:analisis_lotes")!+ @"   
                         where codigo like upper('%" + Articulo + @"%') and fecha_upload = '" + Fecha_upload + @"' 
                         limit '" + Limit + "' offset '" + Offset + "' ;";
 
@@ -367,8 +368,8 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
                         SELECT codigo, equivalente, descripcion, mhfech, importacion, tc, stock_actual, cantidad,
                         fob, costo_unit, lote, costo_lote, costo_unit_promedio, precio_venta_mn, precio_venta_mn_proy,
                         dolares, actual, proy, campo1, utilidad_promedio, venta_2024, venta_2023, venta_2022,
-                        venta_2021, venta_2020, venta_2019, venta_2013, flete, mon  
-                        FROM public."+ configuration.GetValue<string>("BdProduccion:analisis_lotes")!+ @"    
+                        venta_2021, venta_2020, venta_2019, venta_2013, flete, mon , fecha_upload
+                        FROM public." + configuration.GetValue<string>("BdProduccion:analisis_lotes")!+ @"    
                         where codigo like upper('%" + Articulo + @"%') and fecha_upload = '" + Fecha_upload + @"'";
 
             return await db.QueryAsync<TlDetallelote>(sql, new { });
@@ -603,5 +604,13 @@ namespace ApiAlmacen.Repository.AlmacenRepository.Repo
         group by codigo, fechaacumulado, nombrepedido, cantidadpedido, nombreviajando, cantidadviajando  
         */
 
+        public async Task<IEnumerable<Tlfechaupload>> ListadoFechaUpload()
+        {
+            var db = DbConnection();
+            
+            var sql = "select distinct fecha_upload from public."+ configuration.GetValue<string>("BdProduccion:analisis_general")!+ @" order by fecha_upload desc";
+            
+            return await db.QueryAsync<Tlfechaupload>(sql, new { });
+        }
     }
 }

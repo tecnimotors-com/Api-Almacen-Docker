@@ -20,14 +20,18 @@ namespace ApiAlmacen.Controllers.Alerta
         [HttpGet("BusquedaListadoAlerta/{Fecha_upload}")]
         public async Task<IActionResult> BusquedaListadoAlerta(string Fecha_upload)
         {
-            var result = await ialertarepository.BusquedaListadoAlerta(Fecha_upload);
+            var result1 = Fecha_upload.Replace("%2F", "/");
+            var result2 = result1.Replace("%2F", "/");
+            var result = await ialertarepository.BusquedaListadoAlerta(result2);
             return Ok(result);
         }
 
         [HttpGet("ListadoaAlertaInventario/{Fecha_upload}")]
         public async Task<IActionResult> ListadoaAlertaInventario(string Fecha_upload)
         {
-            var result = await ialertarepository.ListadoaAlertaInventario(Fecha_upload);
+            var result1 = Fecha_upload.Replace("%2F", "/");
+            var result2 = result1.Replace("%2F", "/");
+            var result = await ialertarepository.ListadoaAlertaInventario(result2);
             return Ok(result);
         }
 
@@ -38,7 +42,9 @@ namespace ApiAlmacen.Controllers.Alerta
         {
             try
             {
-                var result = await ialertarepository.StockAlertaInventario(Fecha_upload);
+                var result1 = Fecha_upload.Replace("%2F", "/");
+                var result2 = result1.Replace("%2F", "/");
+                var result = await ialertarepository.StockAlertaInventario(result2);
                 Thread.Sleep(100);
                 var directory = Directory.GetCurrentDirectory() + "/ExcelImport/AlertaDiaria.xlsx";
 
@@ -77,7 +83,7 @@ namespace ApiAlmacen.Controllers.Alerta
                 workSheet.Column("E").AdjustToContents();
                 workSheet.SheetView.Freeze(1, 1);
 
-                var resultsinventa = await ialertarepository.StockAlertaSinVenta(Fecha_upload);
+                var resultsinventa = await ialertarepository.StockAlertaSinVenta(result2);
                 Thread.Sleep(100);
                 var workSheet2 = libro.Worksheets.Add("Reporte_Alerta2");
                 workSheet2.Cell("A1").Value = "Codigo Interno";
@@ -233,7 +239,7 @@ namespace ApiAlmacen.Controllers.Alerta
                     libro.Dispose();
                 }
 
-                return Ok("Guardado");
+                return Ok(new { Message = "Datos enviados Correctamente" });
             }
             catch (Exception ex)
             {
